@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
+
+    defaultConfig {
+        applicationId "com.neec.fct.ecopontos"
+        minSdkVersion 21
+        targetSdkVersion 26
+        multiDexEnabled true
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:26.0.0'
+    implementation 'com.android.support:design:26.0.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //library required to display map
+    api("com.tomtom.online:sdk-maps:2.+")
+
+    //library required for search
+    api("com.tomtom.online:sdk-search:2.+")
+
+    //library required for routing
+    api("com.tomtom.online:sdk-routing:2.+")
+
+    //library required for traffic
+    api("com.tomtom.online:sdk-traffic:2.+")
+
+
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+}
