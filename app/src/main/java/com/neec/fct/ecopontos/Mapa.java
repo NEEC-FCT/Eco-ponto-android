@@ -132,7 +132,7 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
                 LatLng FCTUNL = new LatLng( 38.661150 , -9.205777);
 
 
-                tomtomMap.zoomTo(16);
+                tomtomMap.zoomTo(17);
                 tomtomMap.centerOn(FCTUNL);
 
                 MarkerBuilder markerBuilder = new MarkerBuilder(FCTUNL)
