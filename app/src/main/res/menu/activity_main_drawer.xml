@@ -4,15 +4,15 @@
 
         <item
             android:id="@+id/nav_first_layout"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_reuse"
             android:title="Ecoponto FCT" />
         <item
             android:id="@+id/nav_second_layout"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_info"
             android:title="Informações" />
         <item
             android:id="@+id/nav_third_layout"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_us"
             android:title="Sobre APP" />
 
 

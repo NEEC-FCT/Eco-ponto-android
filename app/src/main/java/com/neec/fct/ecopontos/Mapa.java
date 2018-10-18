@@ -26,12 +26,27 @@ import com.tomtom.online.sdk.map.MapFragment;
 import com.tomtom.online.sdk.map.MarkerAnchor;
 import com.tomtom.online.sdk.map.MarkerBuilder;
 import com.tomtom.online.sdk.map.OnMapReadyCallback;
+import com.tomtom.online.sdk.map.Route;
+import com.tomtom.online.sdk.map.RouteBuilder;
 import com.tomtom.online.sdk.map.SimpleMarkerBalloon;
 import com.tomtom.online.sdk.map.TomtomMap;
+import com.tomtom.online.sdk.routing.OnlineRoutingApi;
+import com.tomtom.online.sdk.routing.RoutingApi;
+import com.tomtom.online.sdk.routing.data.InstructionsType;
+import com.tomtom.online.sdk.routing.data.OptimizedWaypoint;
+import com.tomtom.online.sdk.routing.data.Report;
+import com.tomtom.online.sdk.routing.data.RouteQuery;
+import com.tomtom.online.sdk.routing.data.RouteQueryBuilder;
+import com.tomtom.online.sdk.routing.data.RouteResponse;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+
+import io.reactivex.disposables.Disposable;
 import timber.log.Timber;
 
-public class FirstFragment extends Fragment implements FunctionalExampleFragment {
+public class Mapa extends Fragment implements FunctionalExampleFragment {
 
     private final String MAP_RESTORE_KEY = "MAP_RESTORED_ARG";
     public TomtomMap tomtomMap;
@@ -115,11 +130,20 @@ public class FirstFragment extends Fragment implements FunctionalExampleFragment
                 System.out.println("Entrou!!");
 
                 LatLng FCTUNL = new LatLng( 38.661150 , -9.205777);
+
+
+                tomtomMap.zoomTo(16);
+                tomtomMap.centerOn(FCTUNL);
+
                 MarkerBuilder markerBuilder = new MarkerBuilder(FCTUNL)
                         .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
+                        .markerBalloon(new SimpleMarkerBalloon( "Testretetetetete"))
                         .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
                         .decal(true); //By default is false
                 tomtomMap.addMarker(markerBuilder);
+
+
+
 
                 alignCurrentLocationButton(thiscontext, tomtomMap);
                 if (!isMapRestored()) {
@@ -127,6 +151,8 @@ public class FirstFragment extends Fragment implements FunctionalExampleFragment
                 }
             }
         });
+
+
     }
 
     @Override
