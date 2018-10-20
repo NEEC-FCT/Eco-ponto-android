@@ -116,8 +116,13 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
                 tomtomMap = map;
                 System.out.println("Entrou!!");
 
-                LatLng FCTUNL = new LatLng( 38.661150 , -9.205777);
+                LatLng FCTUNL = new LatLng( 38.661050 , -9.205007);
 
+                //pontos
+                //para uso na demo
+                LatLng ponto1 = new LatLng( 38.661950 , -9.205797);
+                LatLng ponto2 = new LatLng( 38.661150 , -9.205737);
+                LatLng ponto3 = new LatLng( 38.661550 , -9.205797);
 
                 tomtomMap.zoomTo(17);
                 tomtomMap.centerOn(FCTUNL);
@@ -125,7 +130,33 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
                 MarkerBuilder markerBuilder = new MarkerBuilder(FCTUNL)
                     //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
                         .icon(Icon.Factory.fromResources(getContext(), R.drawable.allgarbage))
-                        .markerBalloon(new SimpleMarkerBalloon( "Testretetetetete"))
+                        .markerBalloon(new SimpleMarkerBalloon( "Zona do Bar"))
+                        .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
+                        .decal(true); //By default is false
+                tomtomMap.addMarker(markerBuilder);
+
+
+                //demos
+                 markerBuilder = new MarkerBuilder(ponto1)
+                        //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
+                        .icon(Icon.Factory.fromResources(getContext(), R.drawable.glassbin))
+                        .markerBalloon(new SimpleMarkerBalloon( "Fundo Corredor -Norte"))
+                        .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
+                        .decal(true); //By default is false
+                tomtomMap.addMarker(markerBuilder);
+
+                 markerBuilder = new MarkerBuilder(ponto2)
+                        //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
+                        .icon(Icon.Factory.fromResources(getContext(), R.drawable.paperbin))
+                        .markerBalloon(new SimpleMarkerBalloon( "Fundo Corredor -sul"))
+                        .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
+                        .decal(true); //By default is false
+                tomtomMap.addMarker(markerBuilder);
+
+                 markerBuilder = new MarkerBuilder(ponto3)
+                        //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
+                        .icon(Icon.Factory.fromResources(getContext(), R.drawable.plasticbin))
+                        .markerBalloon(new SimpleMarkerBalloon( "Entrada Principal"))
                         .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
                         .decal(true); //By default is false
                 tomtomMap.addMarker(markerBuilder);
