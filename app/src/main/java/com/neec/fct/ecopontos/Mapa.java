@@ -136,7 +136,8 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
                 tomtomMap.centerOn(FCTUNL);
 
                 MarkerBuilder markerBuilder = new MarkerBuilder(FCTUNL)
-                        .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
+                    //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
+                        .icon(Icon.Factory.fromResources(getContext(), R.drawable.allgarbage))
                         .markerBalloon(new SimpleMarkerBalloon( "Testretetetetete"))
                         .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
                         .decal(true); //By default is false
