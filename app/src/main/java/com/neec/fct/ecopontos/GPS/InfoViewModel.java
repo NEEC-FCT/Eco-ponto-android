@@ -8,7 +8,7 @@
  * licensee then you are not authorised to use this software in any manner and should
  * immediately return it to TomTom N.V.
  */
-package com.neec.fct.ecopontos;
+package com.neec.fct.ecopontos.GPS;
 
 import android.support.annotation.StringRes;
 

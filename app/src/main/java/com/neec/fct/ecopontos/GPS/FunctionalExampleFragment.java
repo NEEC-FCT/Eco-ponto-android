@@ -1,4 +1,4 @@
-package com.neec.fct.ecopontos;
+package com.neec.fct.ecopontos.GPS;
 
 import android.content.Context;
 import android.support.annotation.StringRes;

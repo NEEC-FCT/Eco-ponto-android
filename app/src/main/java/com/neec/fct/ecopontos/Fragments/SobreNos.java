@@ -1,5 +1,4 @@
-package com.neec.fct.ecopontos;
-
+package com.neec.fct.ecopontos.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,11 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-public class Informacoes extends Fragment {
+import com.neec.fct.ecopontos.R;
+
+public class SobreNos extends Fragment {
 
 
     Context thiscontext;
-    WebView wb;
 
 
     @Nullable
@@ -22,14 +22,7 @@ public class Informacoes extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         thiscontext = container.getContext();
 
-        View view =  inflater.inflate(R.layout.informacoes, null);
-
-        wb=(WebView)view.findViewById(R.id.webview);
-        wb.getSettings().setJavaScriptEnabled(true);
-        wb.getSettings().setLoadWithOverviewMode(true);
-        wb.getSettings().setUseWideViewPort(true);
-        wb.getSettings().setBuiltInZoomControls(false);
-        wb.loadUrl("http://neec-fct.com/ecoinfo/");
+        View view =  inflater.inflate(R.layout.sobreneec, null);
 
         return view;
 

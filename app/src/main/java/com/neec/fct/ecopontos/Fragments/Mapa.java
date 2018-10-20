@@ -1,4 +1,4 @@
-package com.neec.fct.ecopontos;
+package com.neec.fct.ecopontos.Fragments;
 /**
  * Copyright (c) 2015-2018 TomTom N.V. All rights reserved.
  *
@@ -20,6 +20,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.neec.fct.ecopontos.GPS.FunctionalExampleFragment;
+import com.neec.fct.ecopontos.R;
 import com.tomtom.online.sdk.common.location.LatLng;
 import com.tomtom.online.sdk.map.Icon;
 import com.tomtom.online.sdk.map.MapFragment;

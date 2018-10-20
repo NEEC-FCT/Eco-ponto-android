@@ -8,14 +8,12 @@
  * licensee then you are not authorised to use this software in any manner and should
  * immediately return it to TomTom N.V.
  */
-package com.neec.fct.ecopontos;
+package com.neec.fct.ecopontos.GPS;
 
-import android.support.annotation.StringRes;
+public interface OptionsViewModel {
 
-public interface ActionBarModel {
+    void enableOptionsView();
 
-    void setActionBarTitle(@StringRes final int titleId);
-
-    void setActionBarSubtitle(@StringRes final int subtitleId);
+    void disableOptionsView();
 
 }
