@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,12 +30,15 @@
         </activity>
 
 
+        <activity
+            android:name="com.neec.fct.ecopontos.IntroActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
 
         <meta-data android:name="OnlineMaps.Key" android:value="sWomSNE7cq0z2uvd4vYxJLyMk6KFhgsI" />
         <meta-data android:name="OnlineTraffic.Key" android:value="sWomSNE7cq0z2uvd4vYxJLyMk6KFhgsI" />
         <meta-data android:name="OnlineSearch.Key" android:value="sWomSNE7cq0z2uvd4vYxJLyMk6KFhgsI" />
         <meta-data android:name="OnlineRouting.Key" android:value="sWomSNE7cq0z2uvd4vYxJLyMk6KFhgsI" />
-
 
     </application>
 

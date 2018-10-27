@@ -2,6 +2,8 @@ package com.neec.fct.ecopontos;
 
 
 import android.Manifest;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -28,6 +30,24 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+
+
+        int idName  = pref.getInt("intro", 0);
+
+
+        if(idName == 0){
+
+
+            Intent intent = new Intent(MainActivity.this, IntroActivity.class);
+
+            MainActivity.this.startActivity(intent);
+
+        }
+
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
