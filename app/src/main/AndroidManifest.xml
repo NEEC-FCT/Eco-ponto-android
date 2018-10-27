@@ -40,6 +40,31 @@
         <meta-data android:name="OnlineSearch.Key" android:value="sWomSNE7cq0z2uvd4vYxJLyMk6KFhgsI" />
         <meta-data android:name="OnlineRouting.Key" android:value="sWomSNE7cq0z2uvd4vYxJLyMk6KFhgsI" />
 
+
+        <service android:name="com.neec.fct.ecopontos.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+
+        <service android:name="com.neec.fct.ecopontos.FirebaseIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+
+
+
     </application>
 
 </manifest>
