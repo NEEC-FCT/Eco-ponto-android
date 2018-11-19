@@ -121,7 +121,7 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
         nearby.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                Log.d("FAB","nearby");
+                Log.d("FAB","nearby                                                                                                              ");
             }
         });
 

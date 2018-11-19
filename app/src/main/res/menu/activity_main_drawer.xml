@@ -6,6 +6,12 @@
             android:id="@+id/nav_first_layout"
             android:icon="@drawable/ic_reuse"
             android:title="Ecoponto FCT" />
+
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_info"
+            android:title="Ajuda" />
+
         <item
             android:id="@+id/nav_second_layout"
             android:icon="@drawable/ic_info"

@@ -23,6 +23,7 @@ import android.view.MenuItem;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.neec.fct.ecopontos.Fragments.Informacoes;
 import com.neec.fct.ecopontos.Fragments.Mapa;
+import com.neec.fct.ecopontos.Fragments.Selector;
 import com.neec.fct.ecopontos.Fragments.SobreNos;
 
 
@@ -151,6 +152,14 @@ public class MainActivity extends AppCompatActivity
                             , new SobreNos())
                     .commit();
 
+        }
+
+        else if (id == R.id.nav_help) {
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new Selector())
+                    .commit();
 
         }
 
