@@ -38,7 +38,6 @@
 
     <application
         android:allowBackup="true"
-        android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -47,6 +46,8 @@
         <activity
             android:name="com.neec.fct.ecopontos.Loading"
             android:label="@string/app_name"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,11 +57,13 @@
         </activity>
         <activity
             android:name="com.neec.fct.ecopontos.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.neec.fct.ecopontos.IntroActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
         </activity>
 
         <meta-data
@@ -103,6 +106,7 @@
             android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
             android:excludeFromRecents="true"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
@@ -189,6 +193,7 @@
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
