@@ -37,12 +37,16 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
-        arrayList.add(new DataModel("Item 1", R.drawable.battle, "#09A9FF"));
-        arrayList.add(new DataModel("Item 2", R.drawable.beer, "#3E51B1"));
-        arrayList.add(new DataModel("Item 3", R.drawable.ferrari, "#673BB7"));
-        arrayList.add(new DataModel("Item 4", R.drawable.jetpack_joyride, "#4BAA50"));
-        arrayList.add(new DataModel("Item 5", R.drawable.three_d, "#F94336"));
-        arrayList.add(new DataModel("Item 6", R.drawable.terraria, "#0A9B88"));
+        arrayList.add(new DataModel("Papel ou Cartão", R.drawable.textdocuments, "#09A9FF"));
+        arrayList.add(new DataModel("Plástico ou Metal", R.drawable.bag , "#3E51B1"));
+        arrayList.add(new DataModel("Vidro", R.drawable.fragile, "#673BB7"  ));
+        arrayList.add(new DataModel("Resíduo Perigoso", R.drawable.dangerouscan, "#4BAA50"));
+        arrayList.add(new DataModel("Resíduo de Elétricos", R.drawable.circuitboard, "#F94336"));
+        arrayList.add(new DataModel("Lâmpada", R.drawable.lamp, "#09A9FF"));
+        arrayList.add(new DataModel("Óleo lubrificante", R.drawable.diesel, "#3E51B1"));
+        arrayList.add(new DataModel("Mobiliário", R.drawable.couch, "#673BB7"));
+        arrayList.add(new DataModel("Resíduo Orgânico", R.drawable.apple, "#4BAA50"));
+
 
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(), arrayList, this);
         recyclerView.setAdapter(adapter);
