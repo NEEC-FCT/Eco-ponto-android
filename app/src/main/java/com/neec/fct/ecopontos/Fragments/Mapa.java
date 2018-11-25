@@ -22,7 +22,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.clans.fab.FloatingActionButton;
+import com.neec.fct.ecopontos.ContainersInit;
+import com.neec.fct.ecopontos.EcoPointInit;
+import com.neec.fct.ecopontos.Ecoponto;
 import com.neec.fct.ecopontos.GPS.FunctionalExampleFragment;
+import com.neec.fct.ecopontos.TrashInit;
 import com.neec.fct.ecopontos.R;
 import com.tomtom.online.sdk.common.location.LatLng;
 import com.tomtom.online.sdk.map.Icon;
@@ -32,6 +36,8 @@ import com.tomtom.online.sdk.map.MarkerBuilder;
 import com.tomtom.online.sdk.map.OnMapReadyCallback;
 import com.tomtom.online.sdk.map.SimpleMarkerBalloon;
 import com.tomtom.online.sdk.map.TomtomMap;
+
+import java.util.Iterator;
 
 import timber.log.Timber;
 
@@ -44,12 +50,19 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
     Context thiscontext;
     private boolean isRestored;
     private View view;
+    TrashInit paper ;
+    ContainersInit containers;
+    EcoPointInit ecopontos;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         thiscontext = container.getContext();
+        paper = new TrashInit();
+        containers = new ContainersInit();
+        ecopontos = new EcoPointInit();
+
         if (savedInstanceState != null) {
             isRestored = savedInstanceState.getBoolean(MAP_RESTORE_KEY, false);
         }
@@ -142,51 +155,50 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
                 tomtomMap = map;
                 System.out.println("Entrou!!");
 
-                LatLng FCTUNL = new LatLng( 38.661050 , -9.205007);
 
-                //pontos
-                //para uso na demo
-                LatLng ponto1 = new LatLng( 38.661950 , -9.205797);
-                LatLng ponto2 = new LatLng( 38.661150 , -9.205737);
-                LatLng ponto3 = new LatLng( 38.661550 , -9.205797);
-
+                //Center on FCT
                 tomtomMap.zoomTo(17);
-                tomtomMap.centerOn(FCTUNL);
+                tomtomMap.centerOn(new LatLng( 38.661050 , -9.205007));
 
-                MarkerBuilder markerBuilder = new MarkerBuilder(FCTUNL)
-                    //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
-                        .icon(Icon.Factory.fromResources(getContext(), R.drawable.allgarbage))
-                        .markerBalloon(new SimpleMarkerBalloon( "Zona do Bar"))
-                        .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
-                        .decal(true); //By default is false
-                tomtomMap.addMarker(markerBuilder);
+                //Papeleiras
+                Iterator<Ecoponto> itPaper = paper.getEcopont().iterator();
+                while( itPaper.hasNext()){
+                    Ecoponto ecopaper = itPaper.next();
+                    MarkerBuilder markerBuilder = new MarkerBuilder(ecopaper.getLocation())
+                            //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
+                            .icon(Icon.Factory.fromResources(getContext(), R.drawable.trashbin))
+                            .markerBalloon(new SimpleMarkerBalloon( ecopaper.getDescricao()))
+                            .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
+                            .decal(true); //By default is false
+                    tomtomMap.addMarker(markerBuilder);
+                }
+
+                //Contentores
+                Iterator<Ecoponto> itContainers = paper.getEcopont().iterator();
+                while( itContainers.hasNext()){
+                    Ecoponto ecoContainer = itContainers.next();
+                    MarkerBuilder markerBuilder = new MarkerBuilder(ecoContainer.getLocation())
+                            //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
+                            .icon(Icon.Factory.fromResources(getContext(), R.drawable.container))
+                            .markerBalloon(new SimpleMarkerBalloon( ecoContainer.getDescricao()))
+                            .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
+                            .decal(true); //By default is false
+                    tomtomMap.addMarker(markerBuilder);
+                }
 
 
-                //demos
-                 markerBuilder = new MarkerBuilder(ponto1)
-                        //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
-                        .icon(Icon.Factory.fromResources(getContext(), R.drawable.glassbin))
-                        .markerBalloon(new SimpleMarkerBalloon( "Fundo Corredor -Norte"))
-                        .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
-                        .decal(true); //By default is false
-                tomtomMap.addMarker(markerBuilder);
-
-                 markerBuilder = new MarkerBuilder(ponto2)
-                        //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
-                        .icon(Icon.Factory.fromResources(getContext(), R.drawable.paperbin))
-                        .markerBalloon(new SimpleMarkerBalloon( "Fundo Corredor -sul"))
-                        .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
-                        .decal(true); //By default is false
-                tomtomMap.addMarker(markerBuilder);
-
-                 markerBuilder = new MarkerBuilder(ponto3)
-                        //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
-                        .icon(Icon.Factory.fromResources(getContext(), R.drawable.plasticbin))
-                        .markerBalloon(new SimpleMarkerBalloon( "Entrada Principal"))
-                        .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
-                        .decal(true); //By default is false
-                tomtomMap.addMarker(markerBuilder);
-
+                //Contentores
+                Iterator<Ecoponto> itEcoponts = ecopontos.getEcopont().iterator();
+                while( itEcoponts.hasNext()){
+                    Ecoponto ecoContainer = itEcoponts.next();
+                    MarkerBuilder markerBuilder = new MarkerBuilder(ecoContainer.getLocation())
+                            //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
+                            .icon(Icon.Factory.fromResources(getContext(), R.drawable.allgarbage))
+                            .markerBalloon(new SimpleMarkerBalloon( ecoContainer.getDescricao()))
+                            .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
+                            .decal(true); //By default is false
+                    tomtomMap.addMarker(markerBuilder);
+                }
 
 
 
