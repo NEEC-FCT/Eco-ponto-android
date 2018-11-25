@@ -11,4 +11,6 @@
     <color name="bg_screen1">#85BA2E</color>
     <color name="bg_screen2">#05A3CA</color>
     <color name="bg_screen3">#075180</color>
+    <color name="bad_choice">#ff6666</color>
+
 </resources>
