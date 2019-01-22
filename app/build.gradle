@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.3'
 
 
     defaultConfig {
@@ -31,6 +31,8 @@ dependencies {
 
     //library required to display map
     api("com.tomtom.online:sdk-maps:2.+")
+
+    implementation 'com.android.volley:volley:1.1.0'
 
     //library required for search
     api("com.tomtom.online:sdk-search:2.+")

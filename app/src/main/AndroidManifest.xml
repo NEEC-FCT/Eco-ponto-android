@@ -62,6 +62,26 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name="com.neec.fct.ecopontos.Register"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name="com.neec.fct.ecopontos.Forgot"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name="com.neec.fct.ecopontos.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
+
         <meta-data
             android:name="OnlineMaps.Key"
             android:value="sWomSNE7cq0z2uvd4vYxJLyMk6KFhgsI" />
