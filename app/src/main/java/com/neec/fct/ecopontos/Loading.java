@@ -23,7 +23,7 @@ public class Loading extends AppCompatActivity {
         new Handler().postDelayed(new  Runnable() {
             @Override
             public void run() {
-                Intent homeIntent = new Intent(Loading.this,MainActivity.class);
+                Intent homeIntent = new Intent(Loading.this,LoginActivity.class);
                 startActivity(homeIntent);
                 this.finish();
             }
