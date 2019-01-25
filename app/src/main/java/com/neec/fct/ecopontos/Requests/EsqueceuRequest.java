@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class EsqueceuRequest extends StringRequest {
 
-    private static final String REGISTER_LOGIN_URL = "https://jortec18app.neec-fct.com/jortec2019/recoverRequest.php";
+    private static final String REGISTER_LOGIN_URL = "https://ecoapp.neec-fct.com/recoverRequest.php";
     private Map<String,String> params;
 
     public EsqueceuRequest(String email, Response.Listener<String> listener){
