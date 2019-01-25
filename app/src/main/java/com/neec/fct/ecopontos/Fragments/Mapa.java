@@ -11,21 +11,27 @@ package com.neec.fct.ecopontos.Fragments;
  */
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.neec.fct.ecopontos.ContainersInit;
 import com.neec.fct.ecopontos.EcoPointInit;
 import com.neec.fct.ecopontos.Ecoponto;
 import com.neec.fct.ecopontos.GPS.FunctionalExampleFragment;
+import com.neec.fct.ecopontos.ScannerActivity;
 import com.neec.fct.ecopontos.TrashInit;
 import com.neec.fct.ecopontos.R;
 import com.tomtom.online.sdk.common.location.LatLng;
@@ -37,6 +43,7 @@ import com.tomtom.online.sdk.map.OnMapReadyCallback;
 import com.tomtom.online.sdk.map.SimpleMarkerBalloon;
 import com.tomtom.online.sdk.map.TomtomMap;
 
+import java.io.IOException;
 import java.util.Iterator;
 
 import timber.log.Timber;
@@ -45,6 +52,7 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
 
     private final String MAP_RESTORE_KEY = "MAP_RESTORED_ARG";
     public TomtomMap tomtomMap;
+    public static final int MY_CAMERA_PERMISSION_CODE = 2;
 
 
     Context thiscontext;
@@ -127,8 +135,40 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
         MapFragment mapFragment = (MapFragment) getChildFragmentManager().findFragmentById(R.id.map_fragment);
         FloatingActionButton nearby = (FloatingActionButton) view.findViewById(R.id.nearby);
         FloatingActionButton search = (FloatingActionButton) view.findViewById(R.id.search);
+        FloatingActionButton qrcode = (FloatingActionButton) view.findViewById(R.id.qrgame);
 
         //listeners
+        qrcode.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+
+
+                        Log.v("STORAGE","Permission is granted");
+                        if (getContext().checkSelfPermission(android.Manifest.permission.CAMERA)
+                                != PackageManager.PERMISSION_GRANTED) {
+                            requestPermissions(new String[]{android.Manifest.permission.CAMERA},
+                                    MY_CAMERA_PERMISSION_CODE);
+                            Toast.makeText(getActivity(),"Tenta novamente" ,Toast.LENGTH_LONG).show();
+
+                        } else {
+                            Intent intent = new Intent(getContext(), ScannerActivity.class);
+                            startActivity(intent);
+                        }
+
+
+                } else {
+
+                        Intent intent = new Intent(getContext(), ScannerActivity.class);
+                        startActivity(intent);
+
+                }
+
+
+            }
+        });
+
 
 
         nearby.setOnClickListener(new View.OnClickListener() {
