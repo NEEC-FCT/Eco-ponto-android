@@ -71,13 +71,24 @@
         fab:menu_fab_show_animation="@anim/jump_from_down"
         fab:menu_fab_hide_animation="@anim/jump_to_down">
 
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/qrgame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/appcode"
+            fab:fab_size="normal"
+            fab:fab_label="@string/scan"
+            fab:fab_colorNormal="@android:color/transparent"
+            />
+
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/nearby"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/radar"
             fab:fab_size="normal"
-            fab:fab_label="Mais perto"
+            fab:fab_label="@string/near"
             fab:fab_colorNormal="@android:color/transparent"
             />
 

@@ -5,6 +5,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,7 +22,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.neec.fct.ecopontos.Fragments.Informacoes;
 import com.neec.fct.ecopontos.Fragments.Mapa;
 import com.neec.fct.ecopontos.Fragments.Selector;
 import com.neec.fct.ecopontos.Fragments.SobreNos;
@@ -29,6 +29,8 @@ import com.neec.fct.ecopontos.Fragments.SobreNos;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final String MY_PREFS_NAME = "DATA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,19 +140,21 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_frame
                             , new Mapa())
                     .commit();
-        } else if (id == R.id.nav_second_layout) {
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame
-                            , new Informacoes())
-                    .commit();
-
-        } else if (id == R.id.nav_third_layout) {
+        }  else if (id == R.id.nav_third_layout) {
 
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
                             , new SobreNos())
                     .commit();
+
+        }
+
+        else if (id == R.id.website) {
+
+            String url = "https://neec-fct.com/";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
 
         }
 
@@ -160,6 +164,21 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_frame
                             , new Selector())
                     .commit();
+
+        }
+
+        else if (id == R.id.logout) {
+
+            //logout
+            SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+            editor.remove("token");
+            editor.remove("email");
+            editor.apply();
+            //mudar login
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            MainActivity.this.startActivity(intent);
+
 
         }
 

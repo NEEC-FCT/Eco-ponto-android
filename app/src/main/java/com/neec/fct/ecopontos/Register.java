@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -35,8 +36,19 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.register);
         EditText username = findViewById(R.id.email);
         EditText passwrod = findViewById(R.id.password);
-        CheckBox privacy = findViewById(R.id.ch)
+        CheckBox privacy = findViewById(R.id.checkboc);
         Button registar = findViewById(R.id.sign_up_button);
+        Button reset = findViewById(R.id.btn_reset_password);
+
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent myIntent = new Intent(Register.this, Forgot.class);
+                startActivity(myIntent);
+
+            }
+        });
 
         registar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +105,7 @@ public class Register extends AppCompatActivity {
                                     public void onResponse(String response) {
                                         try {
 
+                                            Log.d("JSON" , response);
                                             JSONObject jsonOResponse = new JSONObject(response);
                                             boolean sucess = jsonOResponse.getBoolean("success");
                                             progress.dismiss();

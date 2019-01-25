@@ -43,6 +43,8 @@ dependencies {
     //library required for traffic
     api("com.tomtom.online:sdk-traffic:2.+")
 
+    //qrcode
+    implementation 'me.dm7.barcodescanner:zxing:1.9'
     //firebase
     implementation 'com.google.firebase:firebase-core:16.0.4'
     implementation 'com.google.firebase:firebase-database:16.0.4'
