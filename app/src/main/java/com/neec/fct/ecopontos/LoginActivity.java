@@ -2,6 +2,7 @@ package com.neec.fct.ecopontos;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -22,10 +23,17 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
 
     ProgressDialog progress;
-
+    public static final String MY_PREFS_NAME = "DATA";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences editorr = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        if ( editorr.contains("token") ){
+            Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(myIntent);
+        }
+
 
         setContentView(R.layout.login);
 
@@ -33,6 +41,17 @@ public class LoginActivity extends AppCompatActivity {
         TextView email = findViewById(R.id.email);
         TextView passw = findViewById(R.id.password);
         Button Blogin = findViewById(R.id.btn_login);
+        Button reset = findViewById(R.id.btn_reset_password);
+
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent myIntent = new Intent(LoginActivity.this, Forgot.class);
+                startActivity(myIntent);
+
+            }
+        });
 
         Blogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +87,11 @@ public class LoginActivity extends AppCompatActivity {
 
                                 if (success) {
 
+
+                                    SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                                    editor.putString("token", jsonResponse.getString("token"));
+                                    editor.putString("email", jsonResponse.getString("email"));
+                                    editor.apply();
 
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

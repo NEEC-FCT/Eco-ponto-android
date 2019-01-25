@@ -5,22 +5,28 @@
         <item
             android:id="@+id/nav_first_layout"
             android:icon="@drawable/ic_reuse"
-            android:title="Ecoponto FCT" />
+            android:title="@string/ecoponto_fct" />
 
         <item
             android:id="@+id/nav_help"
             android:icon="@drawable/help_black_18dp"
-            android:title="Ajuda" />
+            android:title="@string/ajuda" />
 
-        <item
-            android:id="@+id/nav_second_layout"
-            android:icon="@drawable/ic_info"
-            android:title="Informações" />
+
+      <item
+        android:id="@+id/website"
+        android:icon="@drawable/ic_us"
+        android:title= "@string/neec_website" />
+
         <item
             android:id="@+id/nav_third_layout"
             android:icon="@drawable/ic_us"
-            android:title="Sobre APP" />
+            android:title="@string/sobre_app" />
 
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="@string/log_out" />
 
 
 

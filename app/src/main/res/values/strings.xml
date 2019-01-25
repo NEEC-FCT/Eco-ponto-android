@@ -48,6 +48,22 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="pol_tica_de_privacidade">Política de privacidade</string>
+    <string name="aceito_eula_e_pol_tica_de_privacidade">Aceito EULA e Política de privacidade</string>
+    <string name="eula">EULA</string>
+    <string name="email_inexistente">Email Inexistente</string>
+    <string name="tente_novamente">Tentar Novamente</string>
+    <string name="Email_empty">Email não pode estar vazio</string>
+    <string name="verificando">Verificando</string>
+    <string name="loading">Loading..</string>
+    <string name="sobre_app">Sobre APP</string>
+    <string name="informa_es">Informações</string>
+    <string name="ajuda">Ajuda</string>
+    <string name="ecoponto_fct">Ecoponto FCT</string>
+    <string name="log_out">Log out</string>
+    <string name="neec_website">NEEC Website</string>
+    <string name="near">Mais perto</string>
+    <string name="scan">Scan QRCode</string>
 
 
 </resources>
