@@ -64,9 +64,12 @@ public class Forgot extends AppCompatActivity {
                             if (success) {
 
 
-                                Intent intent = new Intent(Forgot.this, MainActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                Forgot.this.startActivity(intent);
+                                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(Forgot.this);
+                                builder.setMessage(R.string.emailenviado)
+                                        .setNegativeButton(R.string.ok, null)
+                                        .create()
+                                        .show();
+
 
                             } else {
                                 android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(Forgot.this);
