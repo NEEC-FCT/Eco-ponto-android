@@ -65,6 +65,9 @@
     <string name="near">Mais perto</string>
     <string name="scan">Scan QRCode</string>
     <string name="algo_correu_mal">Algo correu mal</string>
+    <string name="pergunta">Pergunta:</string>
+    <string name="emailenviado">Email enviado</string>
+    <string name="ok">OK</string>
 
 
 </resources>
