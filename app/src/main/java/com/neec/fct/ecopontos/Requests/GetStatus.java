@@ -15,7 +15,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class GetStatus extends StringRequest {
 
-    private static final String REGISTER_LOGIN_URL = "https://ecoapp.neec-fct.com/getPergunta.php";
+    private static final String REGISTER_LOGIN_URL = "https://ecoapp.neec-fct.com/getStatus.php";
     private Map<String,String> params;
     public static final String MY_PREFS_NAME = "DATA";
 

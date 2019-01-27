@@ -23,6 +23,7 @@ import android.view.MenuItem;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.neec.fct.ecopontos.Fragments.Mapa;
+import com.neec.fct.ecopontos.Fragments.Ranking;
 import com.neec.fct.ecopontos.Fragments.Selector;
 import com.neec.fct.ecopontos.Fragments.SobreNos;
 
@@ -163,6 +164,15 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
                             , new Selector())
+                    .commit();
+
+        }
+
+        else if (id == R.id.rank) {
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new Ranking())
                     .commit();
 
         }

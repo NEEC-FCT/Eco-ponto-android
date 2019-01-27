@@ -40,6 +40,16 @@ public class Register extends AppCompatActivity {
         CheckBox privacy = findViewById(R.id.checkboc);
         Button registar = findViewById(R.id.sign_up_button);
         Button reset = findViewById(R.id.btn_reset_password);
+        Button login = findViewById(R.id.sign_in_button);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent myIntent = new Intent(Register.this, LoginActivity.class);
+                startActivity(myIntent);
+
+            }
+        });
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override

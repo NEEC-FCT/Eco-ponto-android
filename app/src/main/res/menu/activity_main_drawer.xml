@@ -7,6 +7,11 @@
             android:icon="@drawable/ic_reuse"
             android:title="@string/ecoponto_fct" />
 
+      <item
+        android:id="@+id/rank"
+        android:icon="@drawable/podium"
+        android:title="@string/ecoponto_fct" />
+
         <item
             android:id="@+id/nav_help"
             android:icon="@drawable/help_black_18dp"
@@ -15,7 +20,7 @@
 
       <item
         android:id="@+id/website"
-        android:icon="@drawable/ic_us"
+        android:icon="@drawable/web"
         android:title= "@string/neec_website" />
 
         <item
