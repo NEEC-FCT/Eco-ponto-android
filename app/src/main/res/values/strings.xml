@@ -71,6 +71,10 @@
     <string name="nome">Nome</string>
     <string name="errado">Errado</string>
     <string name="voltar">Voltar</string>
+    <string name="ranking">Ranking</string>
+    <string name="name">Nome:</string>
+    <string name="pontos">Pontos:</string>
+    <string name="posicao">Posição:</string>
 
 
 </resources>
