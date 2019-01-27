@@ -36,6 +36,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.register);
         EditText username = findViewById(R.id.email);
         EditText passwrod = findViewById(R.id.password);
+        EditText name = findViewById(R.id.name);
         CheckBox privacy = findViewById(R.id.checkboc);
         Button registar = findViewById(R.id.sign_up_button);
         Button reset = findViewById(R.id.btn_reset_password);
@@ -56,6 +57,7 @@ public class Register extends AppCompatActivity {
 
                 String email = username.getText().toString();
                 String pass = passwrod.getText().toString();
+                String nameS = name.getText().toString();
 
 
                  if(!privacy.isChecked()){
@@ -82,7 +84,7 @@ public class Register extends AppCompatActivity {
 
                 } else {
 
-                    if (pass.isEmpty() || email.isEmpty()  ) {
+                    if (pass.isEmpty() || email.isEmpty() || nameS.isEmpty() ) {
 
                         AlertDialog.Builder burrlder = new AlertDialog.Builder(Register.this);
 
@@ -131,7 +133,7 @@ public class Register extends AppCompatActivity {
                                 };
 
 
-                                RegisterRequest registerrequest = new RegisterRequest( email, pass ,  responListerner);
+                                RegisterRequest registerrequest = new RegisterRequest( email, pass , nameS ,  responListerner);
                                 RequestQueue queue = Volley.newRequestQueue(Register.this);
                                 queue.add(registerrequest);
 

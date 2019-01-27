@@ -76,6 +76,21 @@
         </activity>
 
 
+
+        <activity
+            android:name="com.neec.fct.ecopontos.Wrong"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+
+        <activity
+            android:name="com.neec.fct.ecopontos.Correct"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity
             android:name="com.neec.fct.ecopontos.QuestionTime"
             android:theme="@style/AppTheme.NoActionBar"

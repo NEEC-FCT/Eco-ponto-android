@@ -68,6 +68,9 @@
     <string name="pergunta">Pergunta:</string>
     <string name="emailenviado">Email enviado</string>
     <string name="ok">OK</string>
+    <string name="nome">Nome</string>
+    <string name="errado">Errado</string>
+    <string name="voltar">Voltar</string>
 
 
 </resources>
