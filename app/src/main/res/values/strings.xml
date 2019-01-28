@@ -75,6 +75,7 @@
     <string name="name">Nome:</string>
     <string name="pontos">Pontos:</string>
     <string name="posicao">Posição:</string>
+    <string name="concurso">Concurso</string>
 
 
 </resources>

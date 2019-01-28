@@ -10,7 +10,7 @@
       <item
         android:id="@+id/rank"
         android:icon="@drawable/podium"
-        android:title="@string/ecoponto_fct" />
+        android:title="@string/concurso" />
 
         <item
             android:id="@+id/nav_help"

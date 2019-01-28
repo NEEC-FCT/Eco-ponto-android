@@ -2,6 +2,8 @@ package com.neec.fct.ecopontos.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,10 +26,13 @@ import com.neec.fct.ecopontos.QuestionTime;
 import com.neec.fct.ecopontos.R;
 import com.neec.fct.ecopontos.Requests.GetStatus;
 import com.neec.fct.ecopontos.Requests.ResponderPergunta;
+import com.neec.fct.ecopontos.ScannerActivity;
 import com.neec.fct.ecopontos.Wrong;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static com.neec.fct.ecopontos.Fragments.Mapa.MY_CAMERA_PERMISSION_CODE;
 
 public class Ranking extends Fragment {
 
@@ -53,6 +59,38 @@ public class Ranking extends Fragment {
         TextView name = view.findViewById(R.id.name);
         TextView pontos = view.findViewById(R.id.pontos);
         TextView posicao = view.findViewById(R.id.posicao);
+        Button scan = view.findViewById(R.id.scan);
+
+        scan.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+
+
+                    Log.v("STORAGE","Permission is granted");
+                    if (getContext().checkSelfPermission(android.Manifest.permission.CAMERA)
+                            != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(new String[]{android.Manifest.permission.CAMERA},
+                                MY_CAMERA_PERMISSION_CODE);
+                        Toast.makeText(getActivity(),"Tenta novamente" ,Toast.LENGTH_LONG).show();
+
+                    } else {
+                        Intent intent = new Intent(getContext(), ScannerActivity.class);
+                        startActivity(intent);
+                    }
+
+
+                } else {
+
+                    Intent intent = new Intent(getContext(), ScannerActivity.class);
+                    startActivity(intent);
+
+                }
+
+
+            }
+        });
 
 
 

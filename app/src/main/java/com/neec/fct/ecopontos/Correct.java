@@ -14,7 +14,7 @@ public class Correct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_home_actibity);
+        setContentView(R.layout.correct);
         Button back = findViewById(R.id.voltar);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

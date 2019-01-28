@@ -86,7 +86,7 @@
             android:id="@+id/nearby"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/radar"
+            android:src="@drawable/container"
             fab:fab_size="normal"
             fab:fab_label="@string/near"
             fab:fab_colorNormal="@android:color/transparent"
@@ -96,9 +96,19 @@
             android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/search"
+            android:src="@drawable/allgarbage"
             fab:fab_size="normal"
-            fab:fab_label="Pesquisar"
+            fab:fab_label="@string/near"
+            fab:fab_colorNormal="@android:color/transparent"
+            />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/search2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/trashbin"
+            fab:fab_size="normal"
+            fab:fab_label="@string/near"
             fab:fab_colorNormal="@android:color/transparent"
             />
 
