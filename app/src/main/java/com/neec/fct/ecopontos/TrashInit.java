@@ -11,6 +11,7 @@ public class TrashInit {
 
     public TrashInit() {
         //Adiciona os Pontos
+
         //Papeleiras
         LatLng ponto = new LatLng(38.661050, -9.205007);
         Ecoponto eco = new Ecoponto("Papel", false, false, true, ponto);
@@ -28,9 +29,6 @@ public class TrashInit {
         eco = new Ecoponto("Papel", false, false, true, ponto);
         ecopont.add(eco);
         ponto = new LatLng(38.662853, -9.207483);
-        eco = new Ecoponto("Papel", false, false, true, ponto);
-        ecopont.add(eco);
-        ponto = new LatLng(38.6627, -9.207313);
         eco = new Ecoponto("Papel", false, false, true, ponto);
         ecopont.add(eco);
         ponto = new LatLng(38.662474, -9.207367);

@@ -12,15 +12,11 @@ public class ContainersInit {
     public ContainersInit() {
         //Adiciona os Pontos
         //Contentories
-        LatLng ponto = new LatLng( 38.6627 , - 9.207313);
+
+        LatLng ponto = new LatLng( 38.661978 , - 9.207133);
         Ecoponto eco = new Ecoponto(this.descricao, false, false, true, ponto);
         ecopont.add(eco);
-        ponto = new LatLng( 38.661978 , - 9.207133);
-        eco = new Ecoponto(this.descricao, false, false, true, ponto);
-        ecopont.add(eco);
-        ponto = new LatLng(38.661447  ,- 9.206615);
-        eco = new Ecoponto(this.descricao, false, false, true, ponto);
-        ecopont.add(eco);
+
         ponto = new LatLng( 38.66196 , - 9.205482);
         eco = new Ecoponto(this.descricao, false, false, true, ponto);
         ecopont.add(eco);
@@ -28,9 +24,6 @@ public class ContainersInit {
         eco = new Ecoponto(this.descricao, false, false, true, ponto);
         ecopont.add(eco);
         ponto = new LatLng( 38.661894 ,- 9.204522);
-        eco = new Ecoponto(this.descricao, false, false, true, ponto);
-        ecopont.add(eco);
-        ponto = new LatLng( 38.660423, - 9.204666);
         eco = new Ecoponto(this.descricao, false, false, true, ponto);
         ecopont.add(eco);
         ponto = new LatLng( 38.659691, - 9.203315);
