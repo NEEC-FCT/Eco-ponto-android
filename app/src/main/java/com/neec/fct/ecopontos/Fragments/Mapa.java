@@ -1,7 +1,7 @@
 package com.neec.fct.ecopontos.Fragments;
 /**
  * Copyright (c) 2015-2018 TomTom N.V. All rights reserved.
- *
+ * <p>
  * This software is the proprietary copyright of TomTom N.V. and its subsidiaries and may be used
  * for internal evaluation purposes or commercial use strictly subject to separate licensee
  * agreement between you and TomTom. If you are the licensee, you are only permitted to use
@@ -18,7 +18,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,9 +30,10 @@ import com.neec.fct.ecopontos.ContainersInit;
 import com.neec.fct.ecopontos.EcoPointInit;
 import com.neec.fct.ecopontos.Ecoponto;
 import com.neec.fct.ecopontos.GPS.FunctionalExampleFragment;
+import com.neec.fct.ecopontos.GPSTracker;
+import com.neec.fct.ecopontos.R;
 import com.neec.fct.ecopontos.ScannerActivity;
 import com.neec.fct.ecopontos.TrashInit;
-import com.neec.fct.ecopontos.R;
 import com.tomtom.online.sdk.common.location.LatLng;
 import com.tomtom.online.sdk.map.Icon;
 import com.tomtom.online.sdk.map.MapFragment;
@@ -43,25 +43,116 @@ import com.tomtom.online.sdk.map.OnMapReadyCallback;
 import com.tomtom.online.sdk.map.SimpleMarkerBalloon;
 import com.tomtom.online.sdk.map.TomtomMap;
 
-import java.io.IOException;
 import java.util.Iterator;
 
 import timber.log.Timber;
 
 public class Mapa extends Fragment implements FunctionalExampleFragment {
 
+    public static final int MY_CAMERA_PERMISSION_CODE = 2;
     private final String MAP_RESTORE_KEY = "MAP_RESTORED_ARG";
     public TomtomMap tomtomMap;
-    public static final int MY_CAMERA_PERMISSION_CODE = 2;
-
-
     Context thiscontext;
-    private boolean isRestored;
-    private View view;
-    TrashInit paper ;
+    TrashInit paper;
     ContainersInit containers;
     EcoPointInit ecopontos;
+    private boolean isRestored;
+    private View view;
 
+    /**
+     * Calculate distance between two points in latitude and longitude taking
+     * into account height difference. If you are not interested in height
+     * difference pass 0.0. Uses Haversine method as its base.
+     *
+     * lat1, lon1 Start point lat2, lon2 End point el1 Start altitude in meters
+     * @returns Distance in Meters
+     */
+
+    public double getDistance(LatLng pos1, LatLng pos2) {
+
+        int R = 6371; // km
+        double x = (pos2.getLongitude() - pos1.getLongitude()) * Math.cos((pos1.getLatitude() + pos2.getLatitude()) / 2);
+        double y = (pos2.getLatitude() - pos1.getLatitude());
+        return Math.sqrt(x * x + y * y) * R;
+
+    }
+
+
+    public LatLng getEcoPontos() {
+
+
+        GPSTracker gps = new GPSTracker(getContext());
+
+        LatLng position = new LatLng(gps.getLatitude(), gps.getLongitude());
+
+
+        Iterator<Ecoponto> it = ecopontos.getEcopont().iterator();
+        System.out.println( "TAM: " + ecopontos.getEcopont().size());
+        LatLng best = it.next().getLocation();
+        double distance = getDistance(position, best);
+
+        while (it.hasNext()) {
+            LatLng location = it.next().getLocation();
+            double current = getDistance(position, location);
+            if (current < distance) {
+                distance = current;
+                best = location;
+            }
+
+        }
+        System.out.println("BEST: " + best.toString());
+        return best;
+    }
+
+    public LatLng getContainer() {
+
+
+        GPSTracker gps = new GPSTracker(getContext());
+
+        LatLng position = new LatLng(gps.getLatitude(), gps.getLongitude());
+
+
+        Iterator<Ecoponto> it = containers.getEcopont().iterator();
+        LatLng best = it.next().getLocation();
+        double distance = getDistance(position, best);
+
+        while (it.hasNext()) {
+            LatLng location = it.next().getLocation();
+            double current = getDistance(position, location);
+            if (current < distance) {
+                distance = current;
+                best = location;
+            }
+
+        }
+        System.out.println("BEST: " + best.toString());
+        return best;
+    }
+
+    public LatLng getTrash() {
+
+
+        GPSTracker gps = new GPSTracker(getContext());
+
+        LatLng position = new LatLng(gps.getLatitude(), gps.getLongitude());
+
+
+        Iterator<Ecoponto> it = paper.getEcopont().iterator();
+        LatLng best = it.next().getLocation();
+        double distance = getDistance(position, best);
+
+        while (it.hasNext()) {
+            LatLng location = it.next().getLocation();
+            double current = getDistance(position, location);
+            if (current < distance) {
+                distance = current;
+                best = location;
+            }
+
+        }
+        System.out.println("BEST: " + best.toString());
+        return best;
+    }
 
     @Nullable
     @Override
@@ -70,6 +161,7 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
         paper = new TrashInit();
         containers = new ContainersInit();
         ecopontos = new EcoPointInit();
+
 
         if (savedInstanceState != null) {
             isRestored = savedInstanceState.getBoolean(MAP_RESTORE_KEY, false);
@@ -133,9 +225,45 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
 
     public void assignMap() {
         MapFragment mapFragment = (MapFragment) getChildFragmentManager().findFragmentById(R.id.map_fragment);
-        FloatingActionButton nearby = (FloatingActionButton) view.findViewById(R.id.nearby);
-        FloatingActionButton search = (FloatingActionButton) view.findViewById(R.id.search);
+        FloatingActionButton recycling = (FloatingActionButton) view.findViewById(R.id.recycling);
+        FloatingActionButton search = (FloatingActionButton) view.findViewById(R.id.ecopontoback);
+        FloatingActionButton lixo = (FloatingActionButton) view.findViewById(R.id.lixo);
         FloatingActionButton qrcode = (FloatingActionButton) view.findViewById(R.id.qrgame);
+
+
+
+        lixo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                Log.d("FAB", "nearby  ");
+                LatLng position = getContainer();
+                tomtomMap.centerOn(new LatLng(position.getLatitude(), position.getLongitude()));
+
+            }
+        });
+
+
+
+        recycling.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                Log.d("FAB", "nearby  ");
+                LatLng position = getEcoPontos();
+                tomtomMap.centerOn(new LatLng(position.getLatitude(), position.getLongitude()));
+
+            }
+        });
+
+
+        search.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                Log.d("FAB", "search");
+                LatLng position = getTrash();
+                tomtomMap.centerOn(new LatLng(position.getLatitude(), position.getLongitude()));
+            }
+        });
+
 
         //listeners
         qrcode.setOnClickListener(new View.OnClickListener() {
@@ -144,24 +272,23 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
 
+                    Log.v("STORAGE", "Permission is granted");
+                    if (getContext().checkSelfPermission(android.Manifest.permission.CAMERA)
+                            != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(new String[]{android.Manifest.permission.CAMERA},
+                                MY_CAMERA_PERMISSION_CODE);
+                        Toast.makeText(getActivity(), "Tenta novamente", Toast.LENGTH_LONG).show();
 
-                        Log.v("STORAGE","Permission is granted");
-                        if (getContext().checkSelfPermission(android.Manifest.permission.CAMERA)
-                                != PackageManager.PERMISSION_GRANTED) {
-                            requestPermissions(new String[]{android.Manifest.permission.CAMERA},
-                                    MY_CAMERA_PERMISSION_CODE);
-                            Toast.makeText(getActivity(),"Tenta novamente" ,Toast.LENGTH_LONG).show();
-
-                        } else {
-                            Intent intent = new Intent(getContext(), ScannerActivity.class);
-                            startActivity(intent);
-                        }
+                    } else {
+                        Intent intent = new Intent(getContext(), ScannerActivity.class);
+                        startActivity(intent);
+                    }
 
 
                 } else {
 
-                        Intent intent = new Intent(getContext(), ScannerActivity.class);
-                        startActivity(intent);
+                    Intent intent = new Intent(getContext(), ScannerActivity.class);
+                    startActivity(intent);
 
                 }
 
@@ -169,22 +296,6 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
             }
         });
 
-
-
-        nearby.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Log.d("FAB","nearby                                                                                                              ");
-            }
-        });
-
-
-        search.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-            // Perform action on click
-            Log.d("FAB","search");
-             }
-        });
 
         //mapa
 
@@ -198,48 +309,54 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
 
                 //Center on FCT
                 tomtomMap.zoomTo(17);
-                tomtomMap.centerOn(new LatLng( 38.661050 , -9.205007));
+                tomtomMap.centerOn(new LatLng(38.661050, -9.205007));
 
-                //Papeleiras
-                Iterator<Ecoponto> itPaper = paper.getEcopont().iterator();
-                while( itPaper.hasNext()){
-                    Ecoponto ecopaper = itPaper.next();
-                    MarkerBuilder markerBuilder = new MarkerBuilder(ecopaper.getLocation())
-                            //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
-                            .icon(Icon.Factory.fromResources(getContext(), R.drawable.trashbin))
-                            .markerBalloon(new SimpleMarkerBalloon( ecopaper.getDescricao()))
-                            .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
-                            .decal(true); //By default is false
-                    tomtomMap.addMarker(markerBuilder);
-                }
 
-                //Contentores
-                Iterator<Ecoponto> itContainers = paper.getEcopont().iterator();
-                while( itContainers.hasNext()){
-                    Ecoponto ecoContainer = itContainers.next();
-                    MarkerBuilder markerBuilder = new MarkerBuilder(ecoContainer.getLocation())
-                            //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
-                            .icon(Icon.Factory.fromResources(getContext(), R.drawable.container))
-                            .markerBalloon(new SimpleMarkerBalloon( ecoContainer.getDescricao()))
-                            .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
-                            .decal(true); //By default is false
-                    tomtomMap.addMarker(markerBuilder);
-                }
+
+
+
 
 
                 //Contentores
                 Iterator<Ecoponto> itEcoponts = ecopontos.getEcopont().iterator();
-                while( itEcoponts.hasNext()){
+                while (itEcoponts.hasNext()) {
                     Ecoponto ecoContainer = itEcoponts.next();
                     MarkerBuilder markerBuilder = new MarkerBuilder(ecoContainer.getLocation())
                             //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
-                            .icon(Icon.Factory.fromResources(getContext(), R.drawable.allgarbage))
-                            .markerBalloon(new SimpleMarkerBalloon( ecoContainer.getDescricao()))
+                            .icon(Icon.Factory.fromResources(getContext(), R.drawable.recycling))
+                            .markerBalloon(new SimpleMarkerBalloon(ecoContainer.getDescricao()))
                             .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
                             .decal(true); //By default is false
                     tomtomMap.addMarker(markerBuilder);
                 }
 
+                //Contentores
+                Iterator<Ecoponto> itContainers = containers.getEcopont().iterator();
+                while (itContainers.hasNext()) {
+                    Ecoponto ecoContainer = itContainers.next();
+                    MarkerBuilder markerBuilder = new MarkerBuilder(ecoContainer.getLocation())
+
+                            .icon(Icon.Factory.fromResources(getContext(), R.drawable.ecoponto))
+                            .markerBalloon(new SimpleMarkerBalloon(ecoContainer.getDescricao()))
+                            .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
+                            .decal(true); //By default is false
+                    tomtomMap.addMarker(markerBuilder);
+                }
+
+
+
+                //Papeleiras
+                Iterator<Ecoponto> itPaper = paper.getEcopont().iterator();
+                while (itPaper.hasNext()) {
+                    Ecoponto ecopaper = itPaper.next();
+                    MarkerBuilder markerBuilder = new MarkerBuilder(ecopaper.getLocation())
+                            //    .icon(Icon.Factory.fromResources(getContext(), R.drawable.ponto))
+                            .icon(Icon.Factory.fromResources(getContext(), R.drawable.trash64))
+                            .markerBalloon(new SimpleMarkerBalloon(ecopaper.getDescricao()))
+                            .tag("more information in tag").iconAnchor(MarkerAnchor.Bottom)
+                            .decal(true); //By default is false
+                    tomtomMap.addMarker(markerBuilder);
+                }
 
 
                 alignCurrentLocationButton(thiscontext, tomtomMap);
@@ -290,37 +407,5 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
     @Override
     public void disableOptionsView() {
 
-    }
-
-
-
-    /**
-     * Calculate distance between two points in latitude and longitude taking
-     * into account height difference. If you are not interested in height
-     * difference pass 0.0. Uses Haversine method as its base.
-     *
-     * lat1, lon1 Start point lat2, lon2 End point el1 Start altitude in meters
-     * @returns Distance in Meters
-     */
-    public static double distance(LatLng inicio , LatLng fim ) {
-
-        double lat1 = inicio.getLatitude();
-        double lat2 = fim.getLatitude();
-        double lon1 = inicio.getLongitude();
-        double lon2 = fim.getLongitude();
-
-        final int R = 6371; // Radius of the earth
-
-        double latDistance = Math.toRadians(lat2 - lat1);
-        double lonDistance = Math.toRadians(lon2 - lon1);
-        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
-                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
-                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        double distance = R * c * 1000; // convert to meters
-
-        distance = Math.pow(distance, 2);
-
-        return Math.sqrt(distance);
     }
 }
