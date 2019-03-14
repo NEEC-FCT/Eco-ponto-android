@@ -83,30 +83,31 @@
             />
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/nearby"
+            android:id="@+id/recycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/container"
+            android:src="@drawable/recycling"
             fab:fab_size="normal"
             fab:fab_label="@string/near"
             fab:fab_colorNormal="@android:color/transparent"
             />
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/search"
+            android:id="@+id/ecopontoback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/allgarbage"
+
+            android:src="@drawable/trash64"
             fab:fab_size="normal"
             fab:fab_label="@string/near"
             fab:fab_colorNormal="@android:color/transparent"
             />
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/search2"
+            android:id="@+id/lixo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/trashbin"
+            android:src="@drawable/ecopontoback"
             fab:fab_size="normal"
             fab:fab_label="@string/near"
             fab:fab_colorNormal="@android:color/transparent"
