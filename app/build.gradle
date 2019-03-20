@@ -10,13 +10,12 @@ android {
         minSdkVersion 21
         targetSdkVersion 28
         multiDexEnabled true
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "3.0"
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
         }
     }
 }
@@ -30,27 +29,27 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
 
     //library required to display map
-    api("com.tomtom.online:sdk-maps:2.+")
+    implementation("com.tomtom.online:sdk-maps:2.3.+")
 
     implementation 'com.android.volley:volley:1.1.0'
 
     //library required for search
-    api("com.tomtom.online:sdk-search:2.+")
+    implementation("com.tomtom.online:sdk-search:2.3.+")
 
     //library required for routing
-    api("com.tomtom.online:sdk-routing:2.+")
+    implementation("com.tomtom.online:sdk-routing:2.3.+")
 
     //library required for traffic
-    api("com.tomtom.online:sdk-traffic:2.+")
+    implementation("com.tomtom.online:sdk-traffic:2.3.+")
 
     //qrcode
     implementation 'me.dm7.barcodescanner:zxing:1.9'
 
     //firebase
-    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-database:16.1.0'
     implementation  'com.google.firebase:firebase-storage:16.1.0'
-    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.google.firebase:firebase-auth:16.2.0'
     implementation  'com.google.firebase:firebase-crash:16.2.1'
     implementation  'com.google.firebase:firebase-messaging:17.4.0'
     implementation 'com.google.android.gms:play-services-maps:16.1.0'

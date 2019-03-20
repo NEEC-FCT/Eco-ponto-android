@@ -12,6 +12,7 @@ package com.neec.fct.ecopontos.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -168,6 +169,9 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
         }
 
         view = inflater.inflate(R.layout.mapa, null);
+
+
+
         return view;
 
     }
@@ -362,6 +366,33 @@ public class Mapa extends Fragment implements FunctionalExampleFragment {
                 alignCurrentLocationButton(thiscontext, tomtomMap);
                 if (!isMapRestored()) {
                     showMyPosition();
+                }
+
+
+                SharedPreferences settings = getActivity().getSharedPreferences("FRAG", 0);
+                String ordem = settings.getString("Abrir", "");
+                if(ordem.contains("lixo")){
+                    //apaga
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putString("Abrir", "");
+                    editor.commit();
+
+                    LatLng position = getTrash();
+                    tomtomMap.centerOn(new LatLng(position.getLatitude(), position.getLongitude()));
+
+
+                }
+
+                else if(ordem.contains("Ecoponto")){
+                    //apaga
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putString("Abrir", "");
+                    editor.commit();
+
+                    LatLng position = getEcoPontos();
+                    tomtomMap.centerOn(new LatLng(position.getLatitude(), position.getLongitude()));
+
+
                 }
             }
         });

@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/colorPrimaryDark"
+        android:background="#284B63"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorAccent"
-            android:text="@string/action_sign_in_short"
+            android:text="REGISTAR"
             android:textColor="@android:color/black"
             android:textStyle="bold" />
 
@@ -123,7 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="@null"
-            android:text="@string/btn_forgot_password"
+            android:text="Esqueceu a password? "
             android:textAllCaps="false"
             android:textColor="@color/colorAccent" />
 
@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="@null"
-            android:text="@string/btn_link_to_login"
+            android:text="Login"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="15dp" />

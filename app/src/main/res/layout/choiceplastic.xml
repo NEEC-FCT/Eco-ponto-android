@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TableLayout
+        android:id="@+id/tblTop10List"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/deposit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:paddingLeft="8dp"
+                android:text="Deposite"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/dont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:paddingLeft="4dp"
+                android:text="Não deposite"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/b1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:background="@color/colorPrimary"
+
+                android:paddingLeft="8dp"
+                android:text="Garrafas e garrafões de plástico (água, sumos, óleos alimentares, detergentes)" />
+
+            <Button
+                android:id="@+id/b2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Embalagens contaminadas com substâncias perigosas" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/b3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="8dp"
+                android:text="Sacos e filme de plásticos limpos" />
+
+            <Button
+                android:id="@+id/b4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Garrafões de combustível" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/b5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="8dp"
+                android:text="Embalagens de plástico e metal" />
+
+            <Button
+                android:id="@+id/b6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Cassetes de vídeo, canetas, CD e DVD" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/b7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="8dp"
+
+                android:text="Latas de bebida e conserva" />
+
+            <Button
+                android:id="@+id/b8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Caixas de cartão" />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/tableRow7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/b9"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="8dp"
+                android:text="Pacotes de leite e sumos" />
+
+            <Button
+                android:id="@+id/b10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Toalhetes e fraldas" />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/tableRow9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/b14"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="4dp"
+                android:text="Embalagens de iogurte"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/b15"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Eletrodomésticos, pilhas e baterias" />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/tableRow10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/b16"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="8dp"
+                android:layout_margin="5dp"
+                android:text="Aerossóis (sprays)"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/b17"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Pratos e talheres de plástico" />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/tableRow11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/b18"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="8dp"
+                android:text="Esferovite"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/b19"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Objetos de metal que não sejam embalagens" />
+        </TableRow>
+
+
+
+        <TableRow
+            android:id="@+id/tableRow8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/b12"
+                android:layout_width="0dp"
+                android:visibility="invisible"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:background="@color/colorPrimary"
+                />
+
+            <Button
+                android:id="@+id/b13"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Brinquedos" />
+        </TableRow>
+
+
+
+
+    </TableLayout>
+
+
+</android.support.constraint.ConstraintLayout>

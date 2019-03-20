@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -43,12 +44,12 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
         arrayList.add(new DataModel("Papel ou Cartão", R.drawable.textdocuments, "#09A9FF"));
-        arrayList.add(new DataModel("Plástico ou Metal", R.drawable.bag , "#faff00"));
+        arrayList.add(new DataModel("Plástico ou Metal", R.drawable.bag , "#efec26"));
         arrayList.add(new DataModel("Vidro", R.drawable.fragile, "#05af21"  ));
         arrayList.add(new DataModel("Resíduo Perigoso", R.drawable.dangerouscan, "#4BAA50"));
         arrayList.add(new DataModel("Resíduo de Elétricos", R.drawable.circuitboard, "#F94336"));
         arrayList.add(new DataModel("Lâmpada", R.drawable.lamp, "#09A9FF"));
-        arrayList.add(new DataModel("Óleo lubrificante", R.drawable.diesel, "#e5f71b"));
+        arrayList.add(new DataModel("Óleo lubrificante", R.drawable.diesel, "#6a9b1b"));
         arrayList.add(new DataModel("Mobiliário", R.drawable.couch, "#673BB7"));
         arrayList.add(new DataModel("Resíduo Orgânico", R.drawable.apple, "#995710"));
 
@@ -73,11 +74,47 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
 
         System.out.println("item: " + item.text.toString());
 
+
+
         if( item.text.toString().equals("Papel ou Cartão")){
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
                             , new PaperChoosed())
+                    .commit();
+        }
+        //plastico
+        else if( item.text.toString().equals("Plástico ou Metal")){
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new PlasticChoosed())
+                    .commit();
+        }
+
+        //vidro
+        else if( item.text.toString().equals("Vidro")){
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new GlassChoosed())
+                    .commit();
+        }
+
+        //done
+        //  "Resíduo Orgânico"
+        else if( item.text.toString().equals("Resíduo Orgânico")){
+
+
+            SharedPreferences settings = getActivity().getSharedPreferences("FRAG", 0);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("Abrir", "lixo");
+            editor.commit();
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new Mapa())
                     .commit();
         }
 
@@ -97,21 +134,18 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
             startActivity(i);
         }
 
-        else if( item.text.toString().equals("Mobiliário")){
+        else if( item.text.toString().equals("Lâmpada")){
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
             builder.setTitle("Indicações");
-            builder.setMessage("Solicite à Direção o abate do equipamento\n" +
-                    "Após autorização para o abate solicite a recolha à DAT (pedido de assistência), através do email\n" +
+            builder.setMessage("Coloque a lâmpada usada inteira na embalagem de cartão da lâmpada nova\n" +
+                    "Solicite a recolha à DAT (pedido de assistência), através do email ), através do email\n" +
                     "div.at.sg.helpdesk@fct.unl.pt");
 
             builder.setPositiveButton("Já tenho", new DialogInterface.OnClickListener() {
 
                 public void onClick(DialogInterface dialog, int which) {
-                    // Do nothing but close the dialog
-
-
                     dialog.dismiss();
 
                     Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
@@ -136,7 +170,77 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
             alert.show();
         }
 
-    }
+
+        //eletrico
+        else if( item.text.toString().contains("Mobiliário")){
+
+            System.out.println("Entrou no Mobiliário");
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+            builder.setTitle("Indicações");
+            builder.setMessage("Solicite à Direção o abate do equipamento\n" +
+                    "Após autorização para o abate solicite a recolha à DAT (pedido de assistência), através do email\n" +
+                    "div.at.sg.helpdesk@fct.unl.pt");
+
+            builder.setPositiveButton("Já tenho", new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                            "mailto","div.at.sg.helpdesk@fct.unl.pt", null));
+                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Mobiliário abate");
+                    emailIntent.putExtra(Intent.EXTRA_TEXT, "Corpo");
+                    startActivity(Intent.createChooser(emailIntent, "Send email..."));
+                }
+            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
+
+
+        }
+
+
+
+        else if( item.text.toString().equals("Resíduo de Elétricos")){
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+            builder.setTitle("Indicações");
+            builder.setMessage("Solicite à Direção o abate do equipamento\n" +
+                    "Após autorização para o abate solicite a recolha à DAT (pedido de assistência), através do email\n" +
+                    "div.at.sg.helpdesk@fct.unl.pt");
+
+            builder.setPositiveButton("Já tenho", new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                            "mailto","div.at.sg.helpdesk@fct.unl.pt", null));
+                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Mobiliário abate");
+                    emailIntent.putExtra(Intent.EXTRA_TEXT, "Corpo");
+                    startActivity(Intent.createChooser(emailIntent, "Send email..."));
+                }
+            });
+
+            builder.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    // Do nothing
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+
+        }
 
     }
 

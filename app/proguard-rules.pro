@@ -15,3 +15,12 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+
+-keepclassmembers class ** {
+#   public static *** pure(...);
+#}
+#-keepclassmembers class ** {
+#   public static *** parse(...);
+#}
+#-keep class kategory.** { *; }
