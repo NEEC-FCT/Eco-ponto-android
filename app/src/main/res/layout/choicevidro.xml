@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
+    android:fillViewport="true"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    >
     <TableLayout
         android:id="@+id/tblTop10List"
         android:layout_width="match_parent"
@@ -65,7 +68,7 @@
                 android:background="@color/colorPrimary"
 
                 android:paddingLeft="8dp"
-                android:text="Garrafas" />
+                android:text="Garrafas de vidro" />
 
             <Button
                 android:id="@+id/b2"
@@ -92,7 +95,7 @@
                 android:layout_margin="5dp"
                 android:background="@color/colorPrimary"
                 android:paddingLeft="8dp"
-                android:text="Frascos" />
+                android:text="Frascos de vidro" />
 
             <Button
                 android:id="@+id/b4"
@@ -102,7 +105,7 @@
                 android:layout_margin="5dp"
                 android:background="@color/bad_choice"
                 android:paddingLeft="4dp"
-                android:text="Loiças, pirex e cerâmicas" />
+                android:text="Loiças, pirex e cerâmicas de vidro" />
         </TableRow>
 
         <TableRow
@@ -119,7 +122,7 @@
                 android:layout_margin="5dp"
                 android:background="@color/colorPrimary"
                 android:paddingLeft="8dp"
-                android:text="Garrafões" />
+                android:text="Garrafões de vidro" />
 
             <Button
                 android:id="@+id/b6"
@@ -147,7 +150,7 @@
                 android:background="@color/colorPrimary"
                 android:paddingLeft="8dp"
 
-                android:text="Boiões" />
+                android:text="Boiões de vidro" />
 
             <Button
                 android:id="@+id/b8"
@@ -175,7 +178,7 @@
                 android:layout_margin="5dp"
                 android:background="@color/colorPrimary"
                 android:paddingLeft="8dp"
-                android:text="Pacotes de leite e sumos"
+                android:text="Pacotes de leite e sumos de vidro"
                 android:visibility="invisible" />
 
             <Button
@@ -204,7 +207,7 @@
                 android:layout_margin="5dp"
                 android:background="@color/colorPrimary"
                 android:paddingLeft="4dp"
-                android:text="Embalagens de iogurte"
+                android:text="Embalagens de iogurte de vidro"
                 android:visibility="invisible" />
 
             <Button
@@ -273,7 +276,7 @@
                 android:layout_margin="5dp"
                 android:background="@color/bad_choice"
                 android:paddingLeft="4dp"
-                android:text="Embalagens de medicamentos" />
+                android:text="Embalagens de medicamentos de vidro" />
         </TableRow>
 
 
@@ -307,10 +310,90 @@
                 android:text="Rolhas" />
         </TableRow>
 
+        <TableRow
+            android:id="@+id/tableRow99"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
 
+            <Button
+                android:id="@+id/b99"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/b22"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Autocolantes"
+                android:visibility="invisible" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow999"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/b999"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/b229"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Autocolantes"
+                android:visibility="invisible" />
+        </TableRow>
 
 
     </TableLayout>
+</ScrollView>
 
 
-</android.support.constraint.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

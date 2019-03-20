@@ -1,21 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
+    android:fillViewport="true"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    >
     <TableLayout
         android:id="@+id/tblTop10List"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
         android:stretchColumns="*"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,23 +64,21 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="0"
-                android:paddingLeft="8dp"
                 android:layout_margin="5dp"
-
-                android:text="Embalagens de cartão e papel"
                 android:background="@color/colorPrimary"
-                 />
+
+                android:paddingLeft="8dp"
+                android:text="Embalagens de cartão e papel" />
 
             <Button
                 android:id="@+id/b2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="1"
-                android:paddingLeft="4dp"
                 android:layout_margin="5dp"
-                android:text="Embalagens contaminadas com substâncias perigosas "
                 android:background="@color/bad_choice"
-               />
+                android:paddingLeft="4dp"
+                android:text="Embalagens contaminadas com substâncias perigosas " />
         </TableRow>
 
         <TableRow
@@ -91,22 +92,20 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="0"
-                android:paddingLeft="8dp"
-                android:text="Jornais / Revistas"
                 android:layout_margin="5dp"
                 android:background="@color/colorPrimary"
-                 />
+                android:paddingLeft="8dp"
+                android:text="Jornais / Revistas" />
 
             <Button
                 android:id="@+id/b4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="1"
-                android:paddingLeft="4dp"
                 android:layout_margin="5dp"
-                android:text="Resíduos orgânicos"
                 android:background="@color/bad_choice"
-                 />
+                android:paddingLeft="4dp"
+                android:text="Resíduos orgânicos" />
         </TableRow>
 
         <TableRow
@@ -120,22 +119,20 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="0"
-                android:paddingLeft="8dp"
                 android:layout_margin="5dp"
-                android:text="Papel de escrita e impresso"
                 android:background="@color/colorPrimary"
-                />
+                android:paddingLeft="8dp"
+                android:text="Papel de escrita e impresso" />
 
             <Button
                 android:id="@+id/b6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="1"
-                android:paddingLeft="4dp"
                 android:layout_margin="5dp"
-                android:text="Guardanapos e lenços de papel"
                 android:background="@color/bad_choice"
-                 />
+                android:paddingLeft="4dp"
+                android:text="Guardanapos e lenços de papel" />
         </TableRow>
 
         <TableRow
@@ -149,23 +146,21 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="0"
-                android:paddingLeft="8dp"
                 android:layout_margin="5dp"
-                android:text="Sacos de papel"
-
                 android:background="@color/colorPrimary"
-                />
+                android:paddingLeft="8dp"
+
+                android:text="Sacos de papel" />
 
             <Button
                 android:id="@+id/b8"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="1"
-                android:paddingLeft="4dp"
                 android:layout_margin="5dp"
-                android:text="Loiça de papel"
                 android:background="@color/bad_choice"
-                 />
+                android:paddingLeft="4dp"
+                android:text="Loiça de papel" />
         </TableRow>
 
 
@@ -180,22 +175,20 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="0"
-                android:paddingLeft="8dp"
                 android:layout_margin="5dp"
-                android:text="Livros / Cadernos (sem argolas)"
                 android:background="@color/colorPrimary"
-                 />
+                android:paddingLeft="8dp"
+                android:text="Livros / Cadernos (sem argolas)" />
 
             <Button
                 android:id="@+id/b10"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="1"
-                android:paddingLeft="4dp"
                 android:layout_margin="5dp"
-                android:text="Papel sujo ou húmido "
                 android:background="@color/bad_choice"
-                />
+                android:paddingLeft="4dp"
+                android:text="Papel sujo ou húmido " />
         </TableRow>
 
 
@@ -208,23 +201,21 @@
             <Button
                 android:id="@+id/b14"
                 android:layout_width="0dp"
-                android:visibility="invisible"
                 android:layout_height="match_parent"
                 android:layout_column="0"
-                android:paddingLeft="8dp"
                 android:background="@color/colorPrimary"
-   />
+                android:paddingLeft="8dp"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/b15"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="1"
-                android:paddingLeft="4dp"
                 android:layout_margin="5dp"
-                android:text="Papel vegetal, de alumínio, encerado ou com plástico "
                 android:background="@color/bad_choice"
-                 />
+                android:paddingLeft="4dp"
+                android:text="Papel vegetal, de alumínio, encerado ou com plástico " />
         </TableRow>
 
 
@@ -237,23 +228,21 @@
             <Button
                 android:id="@+id/b16"
                 android:layout_width="0dp"
-                android:visibility="invisible"
                 android:layout_height="match_parent"
                 android:layout_column="0"
-                android:paddingLeft="8dp"
                 android:background="@color/colorPrimary"
-                />
+                android:paddingLeft="8dp"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/b17"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="1"
-                android:paddingLeft="4dp"
                 android:layout_margin="5dp"
-                android:text="Embalagens de cartão com gordura"
                 android:background="@color/bad_choice"
-                />
+                android:paddingLeft="4dp"
+                android:text="Embalagens de cartão com gordura" />
         </TableRow>
 
 
@@ -266,26 +255,23 @@
             <Button
                 android:id="@+id/b18"
                 android:layout_width="0dp"
-                android:visibility="invisible"
                 android:layout_height="match_parent"
                 android:layout_column="0"
-                android:paddingLeft="8dp"
                 android:layout_margin="5dp"
                 android:background="@color/colorPrimary"
-                />
+                android:paddingLeft="8dp"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/b19"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="1"
-                android:paddingLeft="4dp"
                 android:layout_margin="5dp"
-                android:text="Toalhetes e fraldas "
                 android:background="@color/bad_choice"
-                />
+                android:paddingLeft="4dp"
+                android:text="Toalhetes e fraldas " />
         </TableRow>
-
 
 
         <TableRow
@@ -297,31 +283,86 @@
             <Button
                 android:id="@+id/b12"
                 android:layout_width="0dp"
-                android:visibility="invisible"
                 android:layout_height="match_parent"
                 android:layout_column="0"
+                android:background="@color/colorPrimary"
                 android:paddingLeft="8dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:background="@color/colorPrimary"
-                />
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/b13"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_column="1"
-                android:paddingLeft="4dp"
-                android:text="Autocolantes"
                 android:layout_margin="5dp"
                 android:background="@color/bad_choice"
-                />
+                android:paddingLeft="4dp"
+                android:text="Autocolantes" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow99"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/b99"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/b22"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Autocolantes"
+                android:visibility="invisible" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow999"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/b999"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/b229"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="5dp"
+                android:background="@color/bad_choice"
+                android:paddingLeft="4dp"
+                android:text="Autocolantes"
+                android:visibility="invisible" />
         </TableRow>
 
 
-
-
     </TableLayout>
+</ScrollView>
 
 
-</android.support.constraint.ConstraintLayout>
+

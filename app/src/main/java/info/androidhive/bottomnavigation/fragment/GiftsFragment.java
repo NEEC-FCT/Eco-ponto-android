@@ -49,12 +49,10 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 public class GiftsFragment extends Fragment {
 
     public static final int MY_CAMERA_PERMISSION_CODE = 2;
-    private final String MAP_RESTORE_KEY = "MAP_RESTORED_ARG";
     Context thiscontext;
     TrashInit paper;
     ContainersInit containers;
     EcoPointInit ecopontos;
-    MapboxMap mapboxMap;
     private MapView mapView;
     private boolean isRestored;
     private View view;
@@ -94,6 +92,7 @@ public class GiftsFragment extends Fragment {
 
 
         GPSTracker gps = new GPSTracker(getContext());
+        System.out.println("GPS: " + gps.getLatitude() + " " + gps.getLongitude());
 
         LatLng position = new LatLng(gps.getLatitude(), gps.getLongitude());
 
