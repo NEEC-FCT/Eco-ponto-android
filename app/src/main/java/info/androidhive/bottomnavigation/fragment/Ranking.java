@@ -21,7 +21,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,7 +34,7 @@ public class Ranking extends Fragment {
 
 
     Context thiscontext;
-    int[] images = {R.drawable.first, R.drawable.second , R.drawable.medal , R.drawable.medal, R.drawable.medal, R.drawable.medal, R.drawable.medal, R.drawable.medal, R.drawable.medal, R.drawable.medal};
+    int[] images = {R.drawable.first, R.drawable.second, R.drawable.medal, R.drawable.medal, R.drawable.medal, R.drawable.medal, R.drawable.medal, R.drawable.medal, R.drawable.medal, R.drawable.medal};
 
     String[] version = new String[10];
 
@@ -49,7 +48,7 @@ public class Ranking extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         thiscontext = container.getContext();
 
-        View view =  inflater.inflate(R.layout.ranking, null);
+        View view = inflater.inflate(R.layout.ranking, null);
 
         //listview
         lView = (ListView) view.findViewById(R.id.androidList);
@@ -64,13 +63,12 @@ public class Ranking extends Fragment {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
 
-
-                    Log.v("STORAGE","Permission is granted");
+                    Log.v("STORAGE", "Permission is granted");
                     if (getContext().checkSelfPermission(android.Manifest.permission.CAMERA)
                             != PackageManager.PERMISSION_GRANTED) {
                         requestPermissions(new String[]{android.Manifest.permission.CAMERA},
                                 1);
-                        Toast.makeText(getActivity(),"Tenta novamente" ,Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Tenta novamente", Toast.LENGTH_LONG).show();
 
                     } else {
                         Intent intent = new Intent(getContext(), ScannerActivity.class);
@@ -90,7 +88,6 @@ public class Ranking extends Fragment {
         });
 
 
-
         //pedido do servidor
         // Response received from the server
         Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -100,8 +97,8 @@ public class Ranking extends Fragment {
                     Log.d("JSON", response);
                     JSONObject jsonResponse = new JSONObject(response);
                     Log.d("JSON", jsonResponse.toString());
-                    name.setText( getString(R.string.name) + jsonResponse.getString("nome"));
-                    pontos.setText( getString(R.string.pontos) + jsonResponse.getString("pontos"));
+                    name.setText(getString(R.string.name) + jsonResponse.getString("nome"));
+                    pontos.setText(getString(R.string.pontos) + jsonResponse.getString("pontos"));
                     posicao.setText(getString(R.string.posicao) + jsonResponse.getString("pos"));
 
 
@@ -130,17 +127,15 @@ public class Ranking extends Fragment {
                     });
 
 
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         };
 
-        GetStatus responderPergunta = new GetStatus(  responseListener  , getContext()) ;
+        GetStatus responderPergunta = new GetStatus(responseListener, getContext());
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(responderPergunta);
-
 
 
         return view;

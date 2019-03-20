@@ -8,44 +8,19 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import info.androidhive.bottomnavigation.R;
-import info.androidhive.bottomnavigation.fragment.CartFragment;
 import info.androidhive.bottomnavigation.fragment.GiftsFragment;
-import info.androidhive.bottomnavigation.fragment.ProfileFragment;
 import info.androidhive.bottomnavigation.fragment.Ranking;
 import info.androidhive.bottomnavigation.fragment.Selector;
 import info.androidhive.bottomnavigation.fragment.SobreNos;
-import info.androidhive.bottomnavigation.fragment.StoreFragment;
 import info.androidhive.bottomnavigation.helper.BottomNavigationBehavior;
 
 import static info.androidhive.bottomnavigation.LoginActivity.MY_PREFS_NAME;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
-
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        // attaching bottom sheet behaviour - hide / show on scroll
-        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
-        layoutParams.setBehavior(new BottomNavigationBehavior());
-
-        // load the store fragment by default
-
-        loadFragment(new GiftsFragment());
-    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -95,6 +70,24 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        // attaching bottom sheet behaviour - hide / show on scroll
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationBehavior());
+
+        // load the store fragment by default
+
+        loadFragment(new GiftsFragment());
+    }
 
     /**
      * loading fragment into FrameLayout

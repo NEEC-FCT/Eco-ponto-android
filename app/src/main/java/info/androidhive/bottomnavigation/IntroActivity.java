@@ -25,62 +25,6 @@ public class IntroActivity extends Activity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
-        setContentView(R.layout.intro);
-
-
-
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
-        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        btnSkip = (Button) findViewById(R.id.btn_skip);
-        btnNext = (Button) findViewById(R.id.btn_next);
-
-        layouts = new int[]{
-                R.layout.slide1,
-                R.layout.slide2,
-                R.layout.slide3};
-
-        // adding bottom dots
-        addBottomDots(0);
-
-        viewPagerAdapter = new ViewPagerAdapter();
-        viewPager.setAdapter(viewPagerAdapter);
-        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-
-
-
-    }
-
-    public  void btnSkipClick(View v)
-    {
-        launchHomeScreen();
-    }
-
-    public  void btnNextClick(View v)
-    {
-        // checking for last page
-        // if last page home screen will be launched
-        int current = getItem(1);
-        if (current < layouts.length) {
-            // move to next screen
-            viewPager.setCurrentItem(current);
-        } else {
-            launchHomeScreen();
-        }
-    }
-
-
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
@@ -110,6 +54,53 @@ public class IntroActivity extends Activity {
         }
     };
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+        setContentView(R.layout.intro);
+
+
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
+        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
+        btnSkip = (Button) findViewById(R.id.btn_skip);
+        btnNext = (Button) findViewById(R.id.btn_next);
+
+        layouts = new int[]{
+                R.layout.slide1,
+                R.layout.slide2,
+                R.layout.slide3};
+
+        // adding bottom dots
+        addBottomDots(0);
+
+        viewPagerAdapter = new ViewPagerAdapter();
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+
+
+    }
+
+    public void btnSkipClick(View v) {
+        launchHomeScreen();
+    }
+
+    public void btnNextClick(View v) {
+        // checking for last page
+        // if last page home screen will be launched
+        int current = getItem(1);
+        if (current < layouts.length) {
+            // move to next screen
+            viewPager.setCurrentItem(current);
+        } else {
+            launchHomeScreen();
+        }
+    }
 
     private void addBottomDots(int currentPage) {
         dots = new TextView[layouts.length];

@@ -12,7 +12,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,7 +27,7 @@ public class QuestionTime extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-         QRCODE = getIntent().getStringExtra("QRCODE");
+        QRCODE = getIntent().getStringExtra("QRCODE");
 
         setContentView(R.layout.question);
 
@@ -103,8 +102,7 @@ public class QuestionTime extends AppCompatActivity {
     }
 
 
-
-    public void ResponderPergunta(String resposta){
+    public void ResponderPergunta(String resposta) {
         //pedido do servidor
         // Response received from the server
         Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -114,17 +112,15 @@ public class QuestionTime extends AppCompatActivity {
                     Log.d("JSON", response);
                     jsonResponse = new JSONObject(response);
                     Log.d("JSON", jsonResponse.toString());
-                    if(jsonResponse.getBoolean("sucess")){
+                    if (jsonResponse.getBoolean("sucess")) {
                         System.out.println("CORRECTO!!!!");
                         Intent intent = new Intent(QuestionTime.this, Correct.class);
                         startActivity(intent);
-                    }
-                    else {
+                    } else {
                         System.out.println("ERRADO!!!!");
                         Intent intent = new Intent(QuestionTime.this, Wrong.class);
                         startActivity(intent);
                     }
-
 
 
                 } catch (JSONException e) {
@@ -133,7 +129,7 @@ public class QuestionTime extends AppCompatActivity {
             }
         };
 
-        ResponderPergunta responderPergunta = new ResponderPergunta( QRCODE ,resposta, idPergunta , getApplicationContext(), responseListener);
+        ResponderPergunta responderPergunta = new ResponderPergunta(QRCODE, resposta, idPergunta, getApplicationContext(), responseListener);
         RequestQueue queue = Volley.newRequestQueue(QuestionTime.this);
         queue.add(responderPergunta);
     }

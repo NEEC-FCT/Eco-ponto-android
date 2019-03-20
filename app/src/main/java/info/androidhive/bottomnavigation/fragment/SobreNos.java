@@ -22,13 +22,11 @@ public class SobreNos extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         thiscontext = container.getContext();
 
-        View view =  inflater.inflate(R.layout.sobreneec, null);
+        View view = inflater.inflate(R.layout.sobreneec, null);
 
         return view;
 
     }
-
-
 
 
 }

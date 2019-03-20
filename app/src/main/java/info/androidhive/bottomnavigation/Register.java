@@ -17,7 +17,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -70,7 +69,7 @@ public class Register extends AppCompatActivity {
                 String nameS = name.getText().toString();
 
 
-                 if(!privacy.isChecked()){
+                if (!privacy.isChecked()) {
 
                     AlertDialog.Builder bulder = new AlertDialog.Builder(Register.this);
 
@@ -79,33 +78,31 @@ public class Register extends AppCompatActivity {
                             .create()
                             .show();
 
-                }
-
-                else{
-
-                if (pass.length() <= 5) {
-                    AlertDialog.Builder burlder = new AlertDialog.Builder(Register.this);
-
-                    burlder.setMessage("A Password tem de ter no minimo 6 letras")
-                            .setNegativeButton("Tenta novamente", null)
-                            .create()
-                            .show();
-
-
                 } else {
 
-                    if (pass.isEmpty() || email.isEmpty() || nameS.isEmpty() ) {
+                    if (pass.length() <= 5) {
+                        AlertDialog.Builder burlder = new AlertDialog.Builder(Register.this);
 
-                        AlertDialog.Builder burrlder = new AlertDialog.Builder(Register.this);
-
-                        burrlder.setMessage("Não pode existir campos vazios")
+                        burlder.setMessage("A Password tem de ter no minimo 6 letras")
                                 .setNegativeButton("Tenta novamente", null)
                                 .create()
                                 .show();
 
+
                     } else {
 
-                        try {
+                        if (pass.isEmpty() || email.isEmpty() || nameS.isEmpty()) {
+
+                            AlertDialog.Builder burrlder = new AlertDialog.Builder(Register.this);
+
+                            burrlder.setMessage("Não pode existir campos vazios")
+                                    .setNegativeButton("Tenta novamente", null)
+                                    .create()
+                                    .show();
+
+                        } else {
+
+                            try {
 
 
                                 progress = ProgressDialog.show(Register.this, "Loading..",
@@ -117,7 +114,7 @@ public class Register extends AppCompatActivity {
                                     public void onResponse(String response) {
                                         try {
 
-                                            Log.d("JSON" , response);
+                                            Log.d("JSON", response);
                                             JSONObject jsonOResponse = new JSONObject(response);
                                             boolean sucess = jsonOResponse.getBoolean("success");
                                             progress.dismiss();
@@ -143,31 +140,28 @@ public class Register extends AppCompatActivity {
                                 };
 
 
-                                RegisterRequest registerrequest = new RegisterRequest( email, pass , nameS ,  responListerner);
+                                RegisterRequest registerrequest = new RegisterRequest(email, pass, nameS, responListerner);
                                 RequestQueue queue = Volley.newRequestQueue(Register.this);
                                 queue.add(registerrequest);
 
 
-                        } catch (PatternSyntaxException e) {
-                            AlertDialog.Builder burlder = new AlertDialog.Builder(Register.this);
+                            } catch (PatternSyntaxException e) {
+                                AlertDialog.Builder burlder = new AlertDialog.Builder(Register.this);
 
-                            burlder.setMessage("Não pode existir Caracteres Especiais ")
-                                    .setNegativeButton("Tenta novamente", null)
-                                    .create()
-                                    .show();
+                                burlder.setMessage("Não pode existir Caracteres Especiais ")
+                                        .setNegativeButton("Tenta novamente", null)
+                                        .create()
+                                        .show();
+
+
+                            }
 
 
                         }
-
-
                     }
                 }
             }
-            }
         });
-
-
-
 
 
     }

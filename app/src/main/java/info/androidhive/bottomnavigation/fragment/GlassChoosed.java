@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +27,7 @@ public class GlassChoosed extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         thiscontext = container.getContext();
 
-        View view =  inflater.inflate(R.layout.choicevidro, null);
+        View view = inflater.inflate(R.layout.choicevidro, null);
 
         final Button b1 = (Button) view.findViewById(R.id.b1);
         final Button b3 = (Button) view.findViewById(R.id.b3);
@@ -40,7 +39,7 @@ public class GlassChoosed extends Fragment {
         final Button b6 = (Button) view.findViewById(R.id.b6);
         final Button b8 = (Button) view.findViewById(R.id.b8);
         final Button b10 = (Button) view.findViewById(R.id.b10);
-        final Button b15= (Button) view.findViewById(R.id.b15);
+        final Button b15 = (Button) view.findViewById(R.id.b15);
         final Button b17 = (Button) view.findViewById(R.id.b17);
         final Button b19 = (Button) view.findViewById(R.id.b19);
         final Button b13 = (Button) view.findViewById(R.id.b13);
@@ -122,8 +121,7 @@ public class GlassChoosed extends Fragment {
     }
 
 
-
-    public  void abrirLixo(){
+    public void abrirLixo() {
         SharedPreferences settings = getActivity().getSharedPreferences("FRAG", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("Abrir", "lixo");
@@ -140,7 +138,7 @@ public class GlassChoosed extends Fragment {
         transaction.commit();
     }
 
-    public  void abrirEcoponto(){
+    public void abrirEcoponto() {
         SharedPreferences settings = getActivity().getSharedPreferences("FRAG", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("Abrir", "Ecoponto");
@@ -148,8 +146,6 @@ public class GlassChoosed extends Fragment {
 
         loadFragment(new GiftsFragment());
     }
-
-
 
 
 }

@@ -10,16 +10,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import info.androidhive.bottomnavigation.R;
-
 public class ListAdapter extends BaseAdapter {
 
+    private final String[] values;
+    private final int[] images;
     Context context;
-    private final String [] values;
 
-    private final int [] images;
-
-    public ListAdapter(Context context, String [] values, int [] images){
+    public ListAdapter(Context context, String[] values, int[] images) {
         //super(context, R.layout.single_list_app_item, utilsArrayList);
         this.context = context;
         this.values = values;
@@ -59,12 +56,12 @@ public class ListAdapter extends BaseAdapter {
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.aNametxt);
             viewHolder.icon = (ImageView) convertView.findViewById(R.id.appIconIV);
 
-            result=convertView;
+            result = convertView;
 
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
-            result=convertView;
+            result = convertView;
         }
 
         viewHolder.txtName.setText(values[position]);

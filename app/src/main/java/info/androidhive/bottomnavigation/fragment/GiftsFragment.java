@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -40,7 +39,6 @@ import info.androidhive.bottomnavigation.ContainersInit;
 import info.androidhive.bottomnavigation.EcoPointInit;
 import info.androidhive.bottomnavigation.Ecoponto;
 import info.androidhive.bottomnavigation.GPSTracker;
-import info.androidhive.bottomnavigation.MainActivity;
 import info.androidhive.bottomnavigation.R;
 import info.androidhive.bottomnavigation.ScannerActivity;
 import info.androidhive.bottomnavigation.TrashInit;
@@ -50,8 +48,6 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 
 public class GiftsFragment extends Fragment {
 
-    private MapView mapView;
-
     public static final int MY_CAMERA_PERMISSION_CODE = 2;
     private final String MAP_RESTORE_KEY = "MAP_RESTORED_ARG";
     Context thiscontext;
@@ -59,16 +55,29 @@ public class GiftsFragment extends Fragment {
     ContainersInit containers;
     EcoPointInit ecopontos;
     MapboxMap mapboxMap;
+    private MapView mapView;
     private boolean isRestored;
     private View view;
 
+
+    public GiftsFragment() {
+        // Required empty public constructor
+    }
+
+    public static GiftsFragment newInstance(String param1, String param2) {
+        GiftsFragment fragment = new GiftsFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     /**
      * Calculate distance between two points in latitude and longitude taking
      * into account height difference. If you are not interested in height
      * difference pass 0.0. Uses Haversine method as its base.
-     *
+     * <p>
      * lat1, lon1 Start point lat2, lon2 End point el1 Start altitude in meters
+     *
      * @returns Distance in Meters
      */
 
@@ -80,7 +89,6 @@ public class GiftsFragment extends Fragment {
         return Math.sqrt(x * x + y * y) * R;
 
     }
-
 
     public LatLng getContainer() {
 
@@ -116,7 +124,7 @@ public class GiftsFragment extends Fragment {
 
 
         Iterator<Ecoponto> it = ecopontos.getEcopont().iterator();
-        System.out.println( "TAM: " + ecopontos.getEcopont().size());
+        System.out.println("TAM: " + ecopontos.getEcopont().size());
         LatLng best = it.next().getLocation();
         double distance = getDistance(position, best);
 
@@ -158,23 +166,6 @@ public class GiftsFragment extends Fragment {
         return best;
     }
 
-
-
-
-
-
-
-    public GiftsFragment() {
-        // Required empty public constructor
-    }
-
-    public static GiftsFragment newInstance(String param1, String param2) {
-        GiftsFragment fragment = new GiftsFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -192,8 +183,7 @@ public class GiftsFragment extends Fragment {
 
 
         ecopontos = new EcoPointInit();
-         view = inflater.inflate(R.layout.fragment_gifts, container, false);
-
+        view = inflater.inflate(R.layout.fragment_gifts, container, false);
 
 
         mapView = view.findViewById(R.id.mapView);
@@ -238,7 +228,7 @@ public class GiftsFragment extends Fragment {
 
                         SharedPreferences settings = getActivity().getSharedPreferences("FRAG", 0);
                         String ordem = settings.getString("Abrir", "");
-                        if(ordem.contains("lixo")){
+                        if (ordem.contains("lixo")) {
                             //apaga
                             SharedPreferences.Editor editor = settings.edit();
                             editor.putString("Abrir", "");
@@ -251,9 +241,7 @@ public class GiftsFragment extends Fragment {
                                     .build());
 
 
-                        }
-
-                        else if(ordem.contains("Ecoponto")){
+                        } else if (ordem.contains("Ecoponto")) {
                             //apaga
                             SharedPreferences.Editor editor = settings.edit();
                             editor.putString("Abrir", "");
@@ -296,7 +284,6 @@ public class GiftsFragment extends Fragment {
                                         iconOffset(new Float[]{0f, -9f})));
 
 
-
                         markerCoordinates = new ArrayList<>();
                         Iterator<Ecoponto> itPaper = paper.getEcopont().iterator();
                         while (itPaper.hasNext()) {
@@ -322,22 +309,16 @@ public class GiftsFragment extends Fragment {
                                         iconOffset(new Float[]{0f, -9f})));
 
 
-
                         mapboxMap.setCameraPosition(new CameraPosition.Builder()
                                 .target(new LatLng(38.661050, -9.205007))
                                 .zoom(18)
                                 .build());
 
 
-
-
-
-
                         FloatingActionButton recycling = (FloatingActionButton) view.findViewById(R.id.recycling);
                         FloatingActionButton search = (FloatingActionButton) view.findViewById(R.id.ecopontoback);
                         FloatingActionButton lixo = (FloatingActionButton) view.findViewById(R.id.lixo);
                         FloatingActionButton qrcode = (FloatingActionButton) view.findViewById(R.id.qrgame);
-
 
 
                         lixo.setOnClickListener(new View.OnClickListener() {
@@ -352,7 +333,6 @@ public class GiftsFragment extends Fragment {
 
                             }
                         });
-
 
 
                         recycling.setOnClickListener(new View.OnClickListener() {
@@ -421,7 +401,7 @@ public class GiftsFragment extends Fragment {
             }
         });
 
-        return  view;
+        return view;
     }
 
 }

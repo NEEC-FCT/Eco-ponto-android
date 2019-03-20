@@ -8,9 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 public class Loading extends AppCompatActivity {
 
 
-    private static  int SPLASH_TIME_OUT = 1700;
-
-
+    private static int SPLASH_TIME_OUT = 1700;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,21 +17,18 @@ public class Loading extends AppCompatActivity {
         setContentView(R.layout.activity_home_actibity);
 
 
-
-        new Handler().postDelayed(new  Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent homeIntent = new Intent(Loading.this,LoginActivity.class);
+                Intent homeIntent = new Intent(Loading.this, LoginActivity.class);
                 startActivity(homeIntent);
                 this.finish();
             }
-            protected  void finish(){
+
+            protected void finish() {
 
             }
-        },SPLASH_TIME_OUT);
-
-
-
+        }, SPLASH_TIME_OUT);
 
 
     }

@@ -15,13 +15,13 @@ import java.util.Map;
 public class EsqueceuRequest extends StringRequest {
 
     private static final String REGISTER_LOGIN_URL = "https://ecoapp.neec-fct.com/recoverRequest.php";
-    private Map<String,String> params;
+    private Map<String, String> params;
 
-    public EsqueceuRequest(String email, Response.Listener<String> listener){
-        super(Method.POST,REGISTER_LOGIN_URL,listener,null);
+    public EsqueceuRequest(String email, Response.Listener<String> listener) {
+        super(Method.POST, REGISTER_LOGIN_URL, listener, null);
         params = new HashMap<>();
 
-        params.put("email",email);
+        params.put("email", email);
 
     }
 

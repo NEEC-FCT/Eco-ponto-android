@@ -9,14 +9,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-
 
 import java.util.ArrayList;
 
@@ -39,14 +36,14 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         thiscontext = container.getContext();
-        View view =  inflater.inflate(R.layout.selector, null);
+        View view = inflater.inflate(R.layout.selector, null);
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
         arrayList.add(new DataModel("Papel ou Cartão", R.drawable.textdocuments, "#09A9FF"));
-        arrayList.add(new DataModel("Plástico ou Metal", R.drawable.bag , "#efec26"));
-        arrayList.add(new DataModel("Vidro", R.drawable.fragile, "#05af21"  ));
+        arrayList.add(new DataModel("Plástico ou Metal", R.drawable.bag, "#efec26"));
+        arrayList.add(new DataModel("Vidro", R.drawable.fragile, "#05af21"));
         arrayList.add(new DataModel("Resíduo Perigoso", R.drawable.dangerouscan, "#4BAA50"));
         arrayList.add(new DataModel("Resíduo de Elétricos", R.drawable.circuitboard, "#F94336"));
         arrayList.add(new DataModel("Lâmpada", R.drawable.lamp, "#09A9FF"));
@@ -67,7 +64,7 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
         recyclerView.setLayoutManager(layoutManager);
 
 
-        return  view;
+        return view;
     }
 
     public void loadFragment(Fragment fragment) {
@@ -84,27 +81,26 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
         System.out.println("item: " + item.text.toString());
 
 
+        if (item.text.toString().equals("Papel ou Cartão")) {
 
-        if( item.text.toString().equals("Papel ou Cartão")){
-
-            loadFragment( new PaperChoosed() );
+            loadFragment(new PaperChoosed());
         }
         //plastico
-        else if( item.text.toString().equals("Plástico ou Metal")){
+        else if (item.text.toString().equals("Plástico ou Metal")) {
 
-            loadFragment( new PlasticChoosed());
+            loadFragment(new PlasticChoosed());
 
         }
 
         //vidro
-        else if( item.text.toString().equals("Vidro")){
+        else if (item.text.toString().equals("Vidro")) {
 
             loadFragment(new GlassChoosed());
         }
 
         //done
         //  "Resíduo Orgânico"
-        else if( item.text.toString().equals("Resíduo Orgânico")){
+        else if (item.text.toString().equals("Resíduo Orgânico")) {
 
 
             SharedPreferences settings = getActivity().getSharedPreferences("FRAG", 0);
@@ -116,21 +112,18 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
 
         //Residuo perigoso
         //done
-        else if( item.text.toString().equals("Resíduo Perigoso")){
+        else if (item.text.toString().equals("Resíduo Perigoso")) {
             String url = "https://bd2.fct.unl.pt/v7/downloads/dat/ef025_03_entrega_res_perigosos_0118.pdf";
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(url));
             startActivity(i);
-        }
-        else if( item.text.toString().equals("Óleo lubrificante")){
+        } else if (item.text.toString().equals("Óleo lubrificante")) {
             //i.	Deposite num recipiente estanque e fechado
             String url = "https://bd2.fct.unl.pt/v7/downloads/dat/ef025_03_entrega_res_perigosos_0118.pdf";
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(url));
             startActivity(i);
-        }
-
-        else if( item.text.toString().equals("Lâmpada")){
+        } else if (item.text.toString().equals("Lâmpada")) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -145,7 +138,7 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
                     dialog.dismiss();
 
                     Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                            "mailto","div.at.sg.helpdesk@fct.unl.pt", null));
+                            "mailto", "div.at.sg.helpdesk@fct.unl.pt", null));
                     emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Mobiliário abate");
                     emailIntent.putExtra(Intent.EXTRA_TEXT, "Corpo");
                     startActivity(Intent.createChooser(emailIntent, "Send email..."));
@@ -168,7 +161,7 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
 
 
         //eletrico
-        else if( item.text.toString().contains("Mobiliário")){
+        else if (item.text.toString().contains("Mobiliário")) {
 
             System.out.println("Entrou no Mobiliário");
 
@@ -185,7 +178,7 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
                     dialog.dismiss();
 
                     Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                            "mailto","div.at.sg.helpdesk@fct.unl.pt", null));
+                            "mailto", "div.at.sg.helpdesk@fct.unl.pt", null));
                     emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Mobiliário abate");
                     emailIntent.putExtra(Intent.EXTRA_TEXT, "Corpo");
                     startActivity(Intent.createChooser(emailIntent, "Send email..."));
@@ -196,11 +189,7 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
             alert.show();
 
 
-        }
-
-
-
-        else if( item.text.toString().equals("Resíduo de Elétricos")){
+        } else if (item.text.toString().equals("Resíduo de Elétricos")) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -215,7 +204,7 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
                     dialog.dismiss();
 
                     Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                            "mailto","div.at.sg.helpdesk@fct.unl.pt", null));
+                            "mailto", "div.at.sg.helpdesk@fct.unl.pt", null));
                     emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Mobiliário abate");
                     emailIntent.putExtra(Intent.EXTRA_TEXT, "Corpo");
                     startActivity(Intent.createChooser(emailIntent, "Send email..."));
@@ -236,9 +225,9 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
             alert.show();
         }
 
-        }
-
     }
+
+}
 
 
 

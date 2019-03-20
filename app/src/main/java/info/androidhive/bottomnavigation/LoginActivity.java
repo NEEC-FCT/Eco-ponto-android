@@ -15,7 +15,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,14 +23,14 @@ import info.androidhive.bottomnavigation.Requests.LoginRequest;
 
 public class LoginActivity extends AppCompatActivity {
 
-    ProgressDialog progress;
     public static final String MY_PREFS_NAME = "DATA";
+    ProgressDialog progress;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         SharedPreferences editorr = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        if ( editorr.contains("token") ){
+        if (editorr.contains("token")) {
             Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(myIntent);
         }
@@ -58,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
         Blogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
 
                 String emailS = email.getText().toString();
@@ -113,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     };
 
-                    LoginRequest loginRequest = new LoginRequest( emailS, passS, responseListener);
+                    LoginRequest loginRequest = new LoginRequest(emailS, passS, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                     queue.add(loginRequest);
 

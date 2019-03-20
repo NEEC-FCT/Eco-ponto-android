@@ -1,7 +1,6 @@
 package info.androidhive.bottomnavigation;
 
 
-
 import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import java.util.LinkedList;

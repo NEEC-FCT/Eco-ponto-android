@@ -10,8 +10,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
-
 import java.util.ArrayList;
 
 import info.androidhive.bottomnavigation.R;
@@ -19,15 +17,39 @@ import info.androidhive.bottomnavigation.R;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
+    protected ItemListener mListener;
     ArrayList<DataModel> mValues;
     Context mContext;
-    protected ItemListener mListener;
 
     public RecyclerViewAdapter(Context context, ArrayList<DataModel> values, ItemListener itemListener) {
 
         mValues = values;
         mContext = context;
-        mListener=itemListener;
+        mListener = itemListener;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        View view = LayoutInflater.from(mContext).inflate(R.layout.recycler_view_item, parent, false);
+
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder Vholder, int position) {
+        Vholder.setData(mValues.get(position));
+
+    }
+
+    @Override
+    public int getItemCount() {
+
+        return mValues.size();
+    }
+
+    public interface ItemListener {
+        void onItemClick(DataModel item);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -64,29 +86,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 mListener.onItemClick(item);
             }
         }
-    }
-
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(mContext).inflate(R.layout.recycler_view_item, parent, false);
-
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder Vholder, int position) {
-        Vholder.setData(mValues.get(position));
-
-    }
-
-    @Override
-    public int getItemCount() {
-
-        return mValues.size();
-    }
-
-    public interface ItemListener {
-        void onItemClick(DataModel item);
     }
 }

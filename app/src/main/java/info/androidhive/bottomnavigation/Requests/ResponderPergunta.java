@@ -14,22 +14,22 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class ResponderPergunta extends StringRequest {
 
-    private static final String REGISTER_REQUEST_URL = "https://ecoapp.neec-fct.com/responderPergunta.php";
-    private Map<String,String> params;
     public static final String MY_PREFS_NAME = "DATA";
+    private static final String REGISTER_REQUEST_URL = "https://ecoapp.neec-fct.com/responderPergunta.php";
+    private Map<String, String> params;
 
-    public ResponderPergunta(String QRCode, String resposta , String idPergunta , Context context, Response.Listener<String> listener){
-        super(Method.POST,REGISTER_REQUEST_URL,listener,null);
+    public ResponderPergunta(String QRCode, String resposta, String idPergunta, Context context, Response.Listener<String> listener) {
+        super(Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
         //oauth
         SharedPreferences prefs = context.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        Log.d("Oauth",prefs.getString("email", null));
-        Log.d("Oauth",prefs.getString("token", null));
-        params.put("email", prefs.getString("email", null) );
+        Log.d("Oauth", prefs.getString("email", null));
+        Log.d("Oauth", prefs.getString("token", null));
+        params.put("email", prefs.getString("email", null));
         params.put("token", prefs.getString("token", null));
         params.put("QRCode", QRCode);
         params.put("resposta", resposta);
-        params.put("idPergunta" , idPergunta);
+        params.put("idPergunta", idPergunta);
 
 
     }

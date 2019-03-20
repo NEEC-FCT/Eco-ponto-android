@@ -9,7 +9,6 @@ import android.widget.Button;
 public class Wrong extends AppCompatActivity {
 
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -23,8 +22,6 @@ public class Wrong extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
 
 
     }
