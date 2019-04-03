@@ -3,6 +3,7 @@ package info.androidhive.bottomnavigation;
 import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,7 +14,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import info.androidhive.bottomnavigation.fragment.GiftsFragment;
+import info.androidhive.bottomnavigation.fragment.MapaFragment;
 import info.androidhive.bottomnavigation.fragment.Ranking;
 import info.androidhive.bottomnavigation.fragment.Selector;
 import info.androidhive.bottomnavigation.fragment.SobreNos;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_first_layout:
 
 
-                    fragment = new GiftsFragment();
+                    fragment = new MapaFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.rank:
@@ -50,8 +51,10 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.nav_third_layout:
 
-                    fragment = new SobreNos();
-                    loadFragment(fragment);
+                    String url = "https://neec-fct.com/";
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    startActivity(i);
                     return true;
 
                 case R.id.logout:
@@ -89,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         // load the store fragment by default
 
-        loadFragment(new GiftsFragment());
+        loadFragment(new MapaFragment());
     }
 
     /**

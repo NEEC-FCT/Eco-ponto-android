@@ -107,7 +107,7 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("Abrir", "lixo");
             editor.commit();
-            loadFragment(new GiftsFragment());
+            loadFragment(new MapaFragment());
         }
 
         //Residuo perigoso

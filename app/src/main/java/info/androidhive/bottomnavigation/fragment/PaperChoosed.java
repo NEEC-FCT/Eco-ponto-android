@@ -132,7 +132,7 @@ public class PaperChoosed extends Fragment {
         editor.putString("Abrir", "lixo");
         editor.commit();
 
-        loadFragment(new GiftsFragment());
+        loadFragment(new MapaFragment());
     }
 
 
@@ -150,7 +150,7 @@ public class PaperChoosed extends Fragment {
         editor.putString("Abrir", "Ecoponto");
         editor.commit();
 
-        loadFragment(new GiftsFragment());
+        loadFragment(new MapaFragment());
     }
 
 

@@ -127,7 +127,7 @@ public class GlassChoosed extends Fragment {
         editor.putString("Abrir", "lixo");
         editor.commit();
 
-        loadFragment(new GiftsFragment());
+        loadFragment(new MapaFragment());
     }
 
     public void loadFragment(Fragment fragment) {
@@ -144,7 +144,7 @@ public class GlassChoosed extends Fragment {
         editor.putString("Abrir", "Ecoponto");
         editor.commit();
 
-        loadFragment(new GiftsFragment());
+        loadFragment(new MapaFragment());
     }
 
 

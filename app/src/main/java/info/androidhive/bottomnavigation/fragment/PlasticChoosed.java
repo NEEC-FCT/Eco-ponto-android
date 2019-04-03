@@ -142,7 +142,7 @@ public class PlasticChoosed extends Fragment {
         editor.commit();
 
 
-        loadFragment(new GiftsFragment());
+        loadFragment(new MapaFragment());
     }
 
     public void abrirEcoponto() {
@@ -151,7 +151,7 @@ public class PlasticChoosed extends Fragment {
         editor.putString("Abrir", "Ecoponto");
         editor.commit();
 
-        loadFragment(new GiftsFragment());
+        loadFragment(new MapaFragment());
     }
 
 
