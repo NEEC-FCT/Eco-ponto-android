@@ -13,7 +13,7 @@ public class AmareloInit {
         //Adiciona os Pontos
         //Contentories
 
-        LatLng ponto = new LatLng(36.663213, -9.206909);
+        LatLng ponto = new LatLng(38.663213, -9.206909);
         Ecoponto eco = new Ecoponto(this.descricao, false, false, true, ponto);
         ecopont.add(eco);
         ponto = new LatLng(38.663065, -9.207025);
@@ -37,24 +37,25 @@ public class AmareloInit {
         ponto = new LatLng(38.662153, -9.205929);
         eco = new Ecoponto(this.descricao, false, false, true, ponto);
         ecopont.add(eco);
-        ponto = new LatLng(38.662586, -9.205320);
-        eco = new Ecoponto(this.descricao, false, false, true, ponto);
-        ecopont.add(eco);
-        ponto = new LatLng(38.662008, -9.204093);
-        eco = new Ecoponto(this.descricao, false, false, true, ponto);
-        ecopont.add(eco);
+        //biblioteca
+
+
         ponto = new LatLng(38.661789, -9.204689);
         eco = new Ecoponto(this.descricao, false, false, true, ponto);
         ecopont.add(eco);
+
+
         ponto = new LatLng(38.661470, -9.205313);
         eco = new Ecoponto(this.descricao, false, false, true, ponto);
         ecopont.add(eco);
-        ponto = new LatLng(38.6622796, -9.204981);
-        eco = new Ecoponto(this.descricao, false, false, true, ponto);
-        ecopont.add(eco);
+
+
+
         ponto = new LatLng(38.661242, -9.205155);
         eco = new Ecoponto(this.descricao, false, false, true, ponto);
         ecopont.add(eco);
+
+
         ponto = new LatLng(38.661150, -9.204850);
         eco = new Ecoponto(this.descricao, false, false, true, ponto);
         ecopont.add(eco);
@@ -79,12 +80,11 @@ public class AmareloInit {
         ponto = new LatLng(38.660438, -9.205685);
         eco = new Ecoponto(this.descricao, false, false, true, ponto);
         ecopont.add(eco);
-        ponto = new LatLng(38.660363, -9.206723);
-        eco = new Ecoponto(this.descricao, false, false, true, ponto);
-        ecopont.add(eco);
-        ponto = new LatLng(38.660292, -9.206993);
-        eco = new Ecoponto(this.descricao, false, false, true, ponto);
-        ecopont.add(eco);
+
+
+
+//e os amarelos
+
 
 
     }

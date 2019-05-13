@@ -220,7 +220,13 @@ public class MapaFragment extends Fragment {
 
         mapView = view.findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
+
+
+
         mapView.getMapAsync(new OnMapReadyCallback() {
+
+
+
             @Override
             public void onMapReady(@NonNull final MapboxMap mapboxMap) {
 
@@ -385,7 +391,11 @@ public class MapaFragment extends Fragment {
                         lixo.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
                                 // Perform action on click
-                                Log.d("FAB", "nearby  ");
+                             //   Log.d("FAB", "nearby  ");
+
+                              //  Log.d("PONTO", mapboxMap.getCameraPosition().target.getLatitude() + " " + mapboxMap.getCameraPosition().target.getLongitude());
+
+
                                 LatLng position = getContainer();
                                 mapboxMap.setCameraPosition(new CameraPosition.Builder()
                                         .target(position)

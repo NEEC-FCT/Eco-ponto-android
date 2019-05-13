@@ -13,8 +13,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -142,6 +144,10 @@ public class Register extends AppCompatActivity {
 
                                 RegisterRequest registerrequest = new RegisterRequest(email, pass, nameS, responListerner);
                                 RequestQueue queue = Volley.newRequestQueue(Register.this);
+
+                                int socketTimeout = 10000;//30 seconds - change to what you want
+                                RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                                registerrequest.setRetryPolicy(policy);
                                 queue.add(registerrequest);
 
 

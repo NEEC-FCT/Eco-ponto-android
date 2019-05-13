@@ -27,15 +27,9 @@ public class ContainersInit {
         ponto = new LatLng(38.661894, -9.204522);
         eco = new Ecoponto(this.descricao, false, false, true, ponto);
         ecopont.add(eco);
-        ponto = new LatLng(38.659691, -9.203315);
-        eco = new Ecoponto(this.descricao, false, false, true, ponto);
-        ecopont.add(eco);
-        ponto = new LatLng(38.660602, -9.206335);
-        eco = new Ecoponto(this.descricao, false, false, true, ponto);
-        ecopont.add(eco);
-        ponto = new LatLng(38.660057, -9.20642);
-        eco = new Ecoponto(this.descricao, false, false, true, ponto);
-        ecopont.add(eco);
+
+
+
     }
 
 

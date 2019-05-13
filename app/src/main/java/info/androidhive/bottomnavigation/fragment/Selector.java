@@ -43,7 +43,7 @@ public class Selector extends Fragment implements RecyclerViewAdapter.ItemListen
         arrayList = new ArrayList<>();
         arrayList.add(new DataModel("Papel ou Cartão", R.drawable.textdocuments, "#09A9FF"));
         arrayList.add(new DataModel("Plástico ou Metal", R.drawable.bag, "#efec26"));
-        arrayList.add(new DataModel("Vidro", R.drawable.glassnew, "#05af21"));
+        arrayList.add(new DataModel("Vidro", R.drawable.wine, "#05af21"));
         arrayList.add(new DataModel("Resíduo Perigoso", R.drawable.dangerouscan, "#ffb41e"));
         arrayList.add(new DataModel("Resíduo de Elétricos", R.drawable.circuitboard, "#F94336"));
         arrayList.add(new DataModel("Lâmpada", R.drawable.lamp, "#09A9FF"));

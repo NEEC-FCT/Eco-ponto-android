@@ -1,5 +1,6 @@
 package info.androidhive.bottomnavigation.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -25,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import info.androidhive.bottomnavigation.ListAdapter;
+import info.androidhive.bottomnavigation.LoginActivity;
 import info.androidhive.bottomnavigation.R;
 import info.androidhive.bottomnavigation.Requests.GetStatus;
 import info.androidhive.bottomnavigation.ScannerActivity;
@@ -42,6 +44,8 @@ public class Ranking extends Fragment {
 
     ListAdapter lAdapter;
 
+    ProgressDialog progress;
+
 
     @Nullable
     @Override
@@ -56,6 +60,11 @@ public class Ranking extends Fragment {
         final TextView pontos = view.findViewById(R.id.pontos);
         final TextView posicao = view.findViewById(R.id.posicao);
         Button scan = view.findViewById(R.id.scan);
+
+
+        //enviar pedido
+        progress = ProgressDialog.show(getContext(), "Loading..",
+                "Buscando..", true);
 
         scan.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -93,7 +102,10 @@ public class Ranking extends Fragment {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+                progress.dismiss();
                 try {
+
                     Log.d("JSON", response);
                     JSONObject jsonResponse = new JSONObject(response);
                     Log.d("JSON", jsonResponse.toString());

@@ -151,6 +151,56 @@ public class TrashInit {
         eco = new Ecoponto("Papel", false, false, true, ponto);
         ecopont.add(eco);
 
+        ponto = new LatLng(38.66157723479701, -9.206698503642997);
+        eco = new Ecoponto("Papel", false, false, true, ponto);
+        ecopont.add(eco);
+
+
+       //lixo
+        ponto = new LatLng(38.660363, -9.206723);
+        eco = new Ecoponto(this.descricao, false, false, true, ponto);
+        ecopont.add(eco);
+
+
+        ponto = new LatLng(38.662475, -9.207468);
+        eco = new Ecoponto(this.descricao, false, false, true, ponto);
+        ecopont.add(eco);
+
+        ponto = new LatLng( 38.660777,  -9.204801);
+        eco = new Ecoponto(this.descricao, false, false, true, ponto);
+        ecopont.add(eco);
+
+        //biblioteca
+        ponto = new LatLng(38.662586, -9.205320);
+        eco = new Ecoponto(this.descricao, false, false, true, ponto);
+        ecopont.add(eco);
+
+
+        ponto = new LatLng(38.6622796, -9.204981);
+        eco = new Ecoponto(this.descricao, false, false, true, ponto);
+        ecopont.add(eco);
+
+
+        //meio
+        ponto = new LatLng(38.660292, -9.206993);
+        eco = new Ecoponto(this.descricao, false, false, true, ponto);
+        ecopont.add(eco);
+
+
+        ponto = new LatLng(38.659691, -9.203315);
+        eco = new Ecoponto(this.descricao, false, false, true, ponto);
+        ecopont.add(eco);
+
+
+        //meio
+        ponto = new LatLng(38.660602, -9.206335);
+        eco = new Ecoponto(this.descricao, false, false, true, ponto);
+        ecopont.add(eco);
+
+        ponto = new LatLng(38.660057, -9.20642);
+        eco = new Ecoponto(this.descricao, false, false, true, ponto);
+        ecopont.add(eco);
+
     }
 
 

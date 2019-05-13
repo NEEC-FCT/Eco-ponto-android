@@ -1,6 +1,8 @@
 package info.androidhive.bottomnavigation.fragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -56,7 +58,10 @@ public class PlasticChoosed extends Fragment {
 
         b4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                abrirLixo();
+                String url = "https://bd2.fct.unl.pt/v7/downloads/dat/ef025_03_entrega_res_perigosos_0118.pdf";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
             }
         });
         b6.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +86,27 @@ public class PlasticChoosed extends Fragment {
         });
         b15.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                abrirLixo();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                builder.setTitle("Indicações");
+                builder.setMessage("Solicite à Direção o abate\n" +
+                        "Após autorização para o abate solicite a recolha à DAT (pedido de assistência), através do email\n" +
+                        "div.at.sg.helpdesk@fct.unl.pt");
+
+                builder.setPositiveButton("Já tenho", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                                "mailto", "div.at.sg.helpdesk@fct.unl.pt", null));
+                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Eletrodomésticos, pilhas e baterias");
+                        emailIntent.putExtra(Intent.EXTRA_TEXT, "Corpo");
+                        startActivity(Intent.createChooser(emailIntent, "Send email..."));
+                    }
+                });
+
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
         b17.setOnClickListener(new View.OnClickListener() {
